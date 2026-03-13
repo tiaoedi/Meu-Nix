@@ -1,1 +1,452 @@
-hoje comesei a usar
+
+
+instalação xfce4
+sudo pacman -Syyu
+
+sudo pacman -S xorg-server xorg-apps
+
+sudo pacman -S lightdm lightdm-gtk-greeter
+
+sudo pacman -S xfce4 xfce4-goodies 
+
+sudo pacman -Rdd xfce4
+
+traduzir archlinux
+1 
+vim /etc/locale.gen
+2
+locale-gen
+3
+vim /etc/locale.conf
+LANG=pt_BR.UTF-8
+4
+vim /etc/vconsole.conf
+KEYMAP=br-abnt2
+
+lauout amerinano
+setxkbmap -layout us -variant intl
+
+5
+nano /etc/hosts
+
+6
+
+dialog
+
+ Static table lookup for hostnames.
+# See hosts(5) for details.
+127.0.0.1       localhost
+::1             localhost
+127.0.1.1       archlinux-pclinux
+
+#mudar cursor
+sudo vim /usr/share/icons/default/index.theme
+sudo pacman -Rdd adwaita-cursors
+
+
+#logalt
+yay betterlockscreen
+betterlockscreen -u Imagens/japones.jpg
+betterlockscreen -l --dim blur
+
+
+comando para trocar dns
+sudo vim /etc/resolv.conf 
+sudo vim /etc/resolv.conf 
+chattr +i /etc/resolv.conf
+chattr -i /etc/resolv.conf
+dns 1.1.1.1
+2>dns 1.0.0.1
+traduzir libreoffice
+sudo pacman -S extra/libreoffice-fresh-pt
+
+comando pra baixar videos
+ sudo youtube-dl https://youtu.be/1uegkJDNkO4
+ 
+ app para visualizar imagens
+flatpak install flathub org.gnome.Shotwell 
+ 
+add user
+useradd -mG wheel nome
+passwd nome
+
+ 
+ trocar temas awesomewm 
+ /usr/share/awesome/themes
+ 
+ papel de pparede
+ 
+ beautiful.wallpaper
+ 
+ comando para criar entrada de login
+  cd /usr/share/xsessions
+
+#extenções
+Dark Reader
+DownThemAll!
+EazyBe: Powering Whatsapp Web for Work Free
+
+#Cursor dracula
+ sudo pacman -S dracula-
+
+
+# ZSH Suggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
+Adicione:
+zsh-autosuggestions (plugins)
+
+#themas acrh linux
+
+#LXAppearance
+sudo pacman -S lxappearance
+
+#calendario gtk
+ yay gsimplecal
+
+yay volumeicon
+sudo pacman -S fluent-
+sudo pacman -S graphite
+sudo pacman -S fluent-
+sudo pacman -S materia-
+sudo pacman -S orchis-
+yay sardi-icons
+
+#visualizador de imagens
+ sudo pacman -S ristretto
+
+github: https://github.com/erikdubois/arcolinux-nemesis.git
+
+#ver acor via terminal
+ yay xcolor
+
+#nerdfonts
+https://fontawesome.com/v5/cheatsheet
+
+#resolução da tele
+xrandr -s 1920x1080
+
+#timeshift
+paru -S timeshift-bin timeshift-autosnap
+sudo timeshift --list
+sudo timeshift --restore
+
+#subline
+yay -S sublime-text-4
+
+#virtualbox
+virtualbox-host-modules-arch
+
+#thunar abrir pasta root
+pkexec thunar %f
+sudo -E thunar
+
+
+#remover pacman
+unlock
+
+#repositorios
+
+sudo vim /etc/pacman.conf
+
+[arcolinux_repo]
+SigLevel = Required DatabaseOptional
+Include = /etc/pacman.d/arcolinux-mirrorlist
+
+[arcolinux_repo_3party]
+SigLevel = Required DatabaseOptional
+Include = /etc/pacman.d/arcolinux-mirrorlist
+
+[arcolinux_repo_xlarge]
+SigLevel = Required DatabaseOptional
+Include = /etc/pacman.d/arcolinux-mirrorlist
+
+
+[nemesis_repo]
+SigLevel = Optional TrustedOnly
+Server = https://erikdubois.github.io/$repo/$arch
+
+#fixar keygen
+fixkeyz
+sudo pacman -Sy archlinux-keyring && sudo pacman -Syyu 
+
+#kvantum
+Install qt5ct (sudo pacman -S qt5ct)
+You might want to install a Qt theme, that can be done by sudo pacman -S breeze for example.
+Edit /etc/environment as root by sudo nano /etc/environment and add the line QT_QPA_PLATFORMTHEME=qt5ct and save.
+
+#virtualbox 6
+git clone https://aur.archlinux.org/virtualbox-bin.git
+
+#wallpaper
+https://wallpaperset.com/
+
+#comando resolver dependencias
+sudo pacman -Syyu --overwrite "*"
+ #comando remover pacote antigos
+ sudo pacman -Rns $(pacman -Qdtq)
+
+weather
+curl -s wttr.in/Guarulhos\?format\=1
+#fonte
+JetBrainsMono Nerd Font:size=9
+Nerd Fonts:size=10
+
+#void linux ablitar serviço
+sudo ln -s /etc/sv/ufw /var/service
+
+#descompactar tar gz
+tar -zxvf
+
+#install Nvim
+bash install.sh --install
+
+#ip scan
+sudo arp-scan or -d
+
+#void-packages
+./xbps-src pkg tor
+xi 
+
+####Grub-teme
+svim /etc/default/grub
+GRUB_THEME="/boot/grub/themes/arch/theme.txt"
+GRUB_THEME="/boot/grub/themes/starfield/theme.txt"
+
+#Void dwm
+https://www.youtube.com/watch?v=wzh_dKh3eps
+
+#sddm layout
+svim /usr/share/sddm/scripts/Xsetup
+setxkbmap -layout br
+ 
+#sddm themes
+svim /etc/sddm.conf
+[Theme]
+Current=/usr/share/sddm/themes/maldives
+
+
+
+#xbps-src
+./xbps-src bootstrap-update
+
+# numlockx
+/usr/bin/numlockx on
+
+#datacenter
+https://ftp.belnet.be/arcolinux/
+
+###########################################################
+enymotion Desktop requer um hipervisor para executar o sistema Android. A partir do Genymotion Desktop 3.3.0 é possível escolher entre QEMU ou VirtualBox.
+
+
+QEMU
+Caixa Virtual
+QEMU está incluído no Genymotion. Requer kvmque é instalado por padrão em nossas distribuições suportadas .
+
+Você não precisará instalar nada se escolher este hipervisor.
+
+Instalação do Genymotion Desktop¶
+Abra um terminal e vá para sua pasta inicial de download 1 :
+
+
+cd ~/Download
+Dê permissão de execução ao arquivo binário do instalador Genymotion:
+
+
+chmod +x genymotion-X.Y.Z-linux_x64.bin
+Execute o instalador. PATHé o caminho de destino de instalação 2 :
+
+
+./genymotion-X.Y.Z-linux_x64.bin -d PATH
+Instalação global (não recomendada)
+
+#compiz
+yay -S compiz
+compiz --replace
+
+https://l0sp-my.sharepoint.com/:x:/g/personal/pclinux_l0sp_onmicrosoft_com/EblXr8yh1xRAgHMthOv-0RgB-becK0iVBadCqPJwMssEtA?e=WBQjqz
+
+omf install lambda   
+
+#dolphin admin
+ctl + shift + alt + a
+
+win11
+irm "https://christitus.com/win" | iex
+
+
+sudo systemctl restart NetworkManager
+
+smb
+smb://192.168.1.125/programas/
+
+/home/qbt
+
+sudo chattr -i /etc/resolv.conf
+
+ sudo truncate -s 0 /etc/resolv.conf  
+
+ echo -e "nameserver 192.168.1.12\nnameserver 192.168.1.40\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf
+
+ echo -e "nameserver 192.168.1.40\nnameserver 192.168.1.41\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf
+
+echo -e "nameserver 192.168.1.40\nameserver 192.168.1.12\nnameserver 192.168.1.41\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf
+
+sudo chattr +i /etc/resolv.conf
+
+
+######  systemd/resolved.conf
+
+sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+sudo systemctl daemon-reload                                                                                   0 (2.008s) < 17:24:15
+sudo systemctl start systemd-resolved  
+sudo systemctl restart systemd-resolved   
+sudo systemctl enable systemd-resolved    
+systemctl enable --now systemd-resolved  
+code /etc/systemd/resolved.conf 
+
+DNS=192.168.1.12
+FallbackDNS=1.1.1.1
+#Domains=
+#DNSSEC=no
+#DNSOverTLS=no
+#MulticastDNS=yes
+#LLMNR=yes
+#Cache=yes
+#CacheFromLocalhost=no
+DNSStubListener=no
+#DNSStubListenerExtra=
+#ReadEtcHosts=yes
+
+
+
+nameserver 192.168.1.40
+nameserver 192.168.1.41
+nameserver 1.1.1.1
+
+
+### tailscale immich
+https://chatgpt.com/share/68f83fde-bb7c-8001-8d92-7a332fccc255
+
+
+http://100.89.135.45/index.php/apps/dashboard/
+
+### editar lxc
+pct stop 110
+vim /etc/pve/lxc/110.conf
+pct exec 110 -- bash
+pct enter 112
+pct start 110
+
+
+
+[Resolve]
+
+DNS=100.112.254.57
+DNS=100.102.93.17 
+FallbackDNS=1.0.0.1#cloudflare-dns.com
+# Modo DoH: sempre tenta DoH, mas fica disponível caso não funcione
+DNSOverTLS=opportunistic          # pode usar “yes” ou “required”
+# Ativa DNSSEC (opcional, mas recomendado)
+DNSSEC=yes
+# Cache local (por padrão já está “yes”, mas fica explícito)
+Cache=yes
+[Resolve]
+
+DNS=100.112.254.57
+DNS=100.102.93.17 
+FallbackDNS=1.0.0.1#cloudflare-dns.com
+# Modo DoH: sempre tenta DoH, mas fica disponível caso não funcione
+DNSOverTLS=opportunistic          # pode usar “yes” ou “required”
+# Ativa DNSSEC (opcional, mas recomendado)
+DNSSEC=yes
+# Cache local (por padrão já está “yes”, mas fica explícito)
+Cache=yes
+
+ df -h | grep sdb
+
+
+ systemctl restart networking
+ nano /etc/network/interfaces
+ 
+ # The loopback network interface
+auto lo
+#iface lo inet loopback
+
+# The primary network interface
+allow-hotplug ens18
+#iface ens18 inet dhcp
+iface ens18 inet static
+        address 192.168.1.115
+        netmask 255.255.255.0
+        gateway 192.168.1.1
+        dns-nameservers 1.1.1.1
+        dns-nameservers 1.0.01
+
+ 192.168.1.102/24
+ 
+ 192.168.1.5
+ 
+ rtsp://192.168.1.2:554
+ 
+ 
+ http://192.168.1.50:8765
+
+/dev/dri/renderD128
+
+root@jellyfin:/# id jellyfin
+uid=107(jellyfin) gid=110(jellyfin) groups=110(jellyfin),44(video),993(render)
+
+
+
+/dev/dri/renderD128
+/dev/dri/renderD128
+
+oot@immich:~# id immich
+uid=999(immich) gid=996(immich) groups=996(immich),44(video),104(render)
+root@immich:~# 
+
+passe esta gpu  /dev/dri/renderD128 para webeui  no lxc proxmox
+
+
+# Generated by NetworkManager
+nameserver 100.112.254.57
+nameserver 1.1.1.1
+
+
+ffmpeg -f hevc -i 20251230121800577.h265 -c copy video.mp4    
+
+for f in *.h265; do                                                                
+  ffmpeg -f hevc -err_detect ignore_err -i "$f" -c copy "${f%.h265}.mp4"
+done
+
+ffplay rtsp://admin:sonhoi30@192.168.1.3:554/onvif1  
+
+###waybar
+curl -fsSL get.axeni.de/ax-shell | bash
+
+#virtmanager autostart
+sudo virsh list --all\n
+ sudo virsh autostart proximox\n
+ sudo virsh dominfo proximox | grep Autostart\n
+ sudo virsh dominfo proximox\n
+
+ sudo libvirtd -v &
+
+ lxc.cgroup2.devices.allow: c 10:200 rwm
+lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file   
+
+100.123.91.45
+
+sudo virsh list --all
+
+sudo virsh autostart proximox
+
+sudo virsh dominfo proximox | grep Autostart
+
+QT_QPA_PLATFORM=xcb appimage-run ./Stacer-1.1.0-x64.AppImage
+
+https://github.com/tiaoedi/Meu-Nix
+
+sudo nixos-rebuild switch --flake /home/pc120/Meu-Nix#Nix
