@@ -2,7 +2,7 @@
 # Variables
 {
   # Git Configuration ( For Pulling Software Repos )
-  gitUsername = "pc120";
+  gitUsername = "tiaoedi";
   gitEmail = "tiaoedi@outlook.com";
 
   # Hyprland Settings
