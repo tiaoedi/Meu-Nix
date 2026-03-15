@@ -455,4 +455,7 @@ sudo nixos-rebuild switch --flake /home/pc120/Meu-Nix#Nix
 
  tailscale serve status
 
+ sudo tailscale serve --bg 8096
+ 
  tailscale serve --https=443 off
+
