@@ -450,3 +450,9 @@ QT_QPA_PLATFORM=xcb appimage-run ./Stacer-1.1.0-x64.AppImage
 https://github.com/tiaoedi/Meu-Nix
 
 sudo nixos-rebuild switch --flake /home/pc120/Meu-Nix#Nix
+
+ sudo tailscale serve --bg http://127.0.0.1:5000
+
+ tailscale serve status
+
+ tailscale serve --https=443 off
