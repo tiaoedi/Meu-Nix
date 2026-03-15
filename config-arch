@@ -454,6 +454,8 @@ sudo nixos-rebuild switch --flake /home/pc120/Meu-Nix#Nix
  sudo tailscale serve --bg http://127.0.0.1:5000
 
  tailscale serve status
+ 
+ sudo tailscale set --hostname portainer
 
  sudo tailscale serve --bg 8096
  
