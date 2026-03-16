@@ -1,6 +1,10 @@
-{ lib, config, pkgs, ... }:
-
-let cfg = config.systemSettings.virtualization.virtualMachines;
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
+  cfg = config.systemSettings.virtualization.virtualMachines;
 in {
   options = {
     systemSettings.virtualization.virtualMachines = {
@@ -9,7 +13,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ virt-manager distrobox ];
+    environment.systemPackages = with pkgs; [virt-manager distrobox];
     virtualisation.libvirtd = {
       allowedBridges = [
         "nm-bridge"

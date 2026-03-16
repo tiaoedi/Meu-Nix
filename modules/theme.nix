@@ -27,7 +27,6 @@
 
   # Set system dconf defaults so new users prefer dark by default.
   # Users can still override per-user via gsettings.
-  
 
   # Rebuild the dconf database at activation to apply system defaults
   system.activationScripts.dconfUpdate = {

@@ -1,9 +1,9 @@
-{ pkgs
-, inputs
-, host
-, ...
+{
+  pkgs,
+  inputs,
+  host,
+  ...
 }: {
-
   services.power-profiles-daemon.enable = true;
 
   programs = {
@@ -51,7 +51,7 @@
     alejandra
     onefetch
     atop
-    go #needed for waybar-weather compile 
+    go #needed for waybar-weather compile
 
     # Update flkake script
     (pkgs.writeShellScriptBin "update" ''
@@ -150,7 +150,7 @@
     libnotify
     libsForQt5.qtstyleplugin-kvantum # kvantum
     libsForQt5.qt5ct
-    (mpv.override { scripts = [ mpvScripts.mpris ]; }) # with tray
+    (mpv.override {scripts = [mpvScripts.mpris];}) # with tray
     nvtopPackages.full
     openssl # required by Rainbow borders
     pciutils
@@ -222,7 +222,7 @@
     xarchiver
     yad
     yazi
-    xdg-user-dirs #needed for copy.sh 
+    xdg-user-dirs #needed for copy.sh
     yt-dlp
 
     (inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default)
@@ -304,5 +304,4 @@
     JAKOS_NIXOS_VERSION = "0.0.5";
     JAKOS = "true";
   };
-
 }

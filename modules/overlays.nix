@@ -76,10 +76,6 @@
           '';
       });
 
-      
-      
-      
-          
       # Work around pamixer failing to find cxxopts via pkg-config (bogus icu-cu requirement)
       pamixer = prev.pamixer.overrideAttrs (old: {
         nativeBuildInputs = (old.nativeBuildInputs or []) ++ [final."pkg-config" cxxoptsPcShim];
