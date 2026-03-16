@@ -184,7 +184,7 @@
     evince
     gtop
     dmidecode
-    bitwarden-desktop
+    #bitwarden-desktop
     capitaine-cursors
     libsForQt5.qt5.qttools
     python313Packages.tkinter
