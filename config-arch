@@ -474,4 +474,5 @@ git add .
 git commit -m "revert to 2026-03-16"
 git push
 
+nix fmt .
 
