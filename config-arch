@@ -461,9 +461,3 @@ sudo nixos-rebuild switch --flake /home/pc120/Meu-Nix#Nix
  
  tailscale serve --https=443 off
 
- sudo tailscale up --accept-dns=false --operator=pc120 --ssh
-
- nmcli con mod "Conexão cabeada 1" ipv4.dns "192.168.1.100"
- nmcli con mod "Conexão cabeada 1" ipv4.ignore-auto-dns yes
- nmcli con up "Conexão cabeada 1"
-
