@@ -461,3 +461,17 @@ sudo nixos-rebuild switch --flake /home/pc120/Meu-Nix#Nix
  
  tailscale serve --https=443 off
 
+git log --oneline --format="%h %ai %s" | grep "2026-03-16"
+
+cd ~/Meu-Nix
+git checkout d697bfa -- .
+
+sudo nixos-rebuild switch --flake .#Nix 
+reboot
+
+cd ~/Meu-Nix
+git add .
+git commit -m "revert to 2026-03-16"
+git push
+
+
