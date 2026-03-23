@@ -195,7 +195,8 @@
           action.spawn = ["firefox"];
           hotkey-overlay.title = "Run an Application: firefox";
         };
-        "Mod+F5".action.spawn = ["sh" "-c" "~/.config/niri/scripts/ClipManager.sh"];
+        "Mod+F5".action.spawn = ["sh" "-c" "cliphist list | rofi -dmenu | cliphist decode | wl-copy"];
+        "Mod+Shift+Delete".action.spawn = ["sh" "-c" "cliphist list | rofi -dmenu | cliphist delete"];
         "Mod+F6".action.spawn = ["vlc"];
         "Mod+F1" = {
           action.spawn = ["brave"];
