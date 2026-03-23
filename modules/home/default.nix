@@ -13,5 +13,6 @@
     ./cli/tealdeer.nix
     ./yazi
     ./overview.nix
+    ./niri.nix
   ];
 }
