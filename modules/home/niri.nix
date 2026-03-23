@@ -4,9 +4,9 @@
 
     settings = {
       # ── Debug ────────────────────────────────────────────────────────────
-     debug = {
-         render-drm-device = "/dev/dri/renderD128";
-     };
+      debug = {
+        render-drm-device = "/dev/dri/renderD128";
+      };
 
       # ── Geral ────────────────────────────────────────────────────────────
       prefer-no-csd = true;
@@ -72,7 +72,10 @@
             height = 1080;
             refresh = 60.0;
           };
-          position = {x = 0; y = 0;};
+          position = {
+            x = 0;
+            y = 0;
+          };
           scale = 1.0;
         };
         "eDP-1".enable = false;
@@ -111,11 +114,19 @@
           enable = true;
           softness = 30.0;
           spread = 5.0;
-          offset = {x = 0.0; y = 5.0;};
+          offset = {
+            x = 0.0;
+            y = 5.0;
+          };
           color = "#0007";
         };
 
-        struts = {top = 0; bottom = 0; left = 0; right = 0;};
+        struts = {
+          top = 0;
+          bottom = 0;
+          left = 0;
+          right = 0;
+        };
       };
 
       # ── Hotkey Overlay ───────────────────────────────────────────────────
@@ -146,7 +157,12 @@
           default-column-width = {};
         }
         {
-          matches = [{app-id = "firefox$"; title = "^Picture-in-Picture$";}];
+          matches = [
+            {
+              app-id = "firefox$";
+              title = "^Picture-in-Picture$";
+            }
+          ];
           open-floating = true;
         }
         {
@@ -171,7 +187,6 @@
 
       # ── Keybinds ─────────────────────────────────────────────────────────
       binds = {
-
         # ── Hotkey overlay ──
         "Mod+Shift+Slash".action.show-hotkey-overlay = {};
 

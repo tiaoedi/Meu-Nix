@@ -1,7 +1,7 @@
 {lib, ...}: {
   programs.git = {
     enable = true;
-    signing.format = "openpgp"; 
+    signing.format = "openpgp";
     # If you want to set identity per-host, you can do it in a small overlay
     # or via host variables. Leaving these unset keeps git functional and avoids
     # a build-time dependency on external variables.
