@@ -124,13 +124,12 @@
       # ── Autostart ────────────────────────────────────────────────────────
       spawn-at-startup = [
         {command = ["sh" "-c" "qs -c ~/.config/quickshell/noctalia-shell"];}
-        {command = ["sh" "-c" "~/.config/niri/autostart.sh"];}
         {command = ["xwayland-satellite"];}
         {command = ["kdeconnect-indicator"];}
         {command = ["sh" "-c" "nm-applet --indicator"];}
         {command = ["swaylock-effects"];}
         {command = ["sh" "-c" "wl-paste --watch cliphist store"];}
-        {command = ["sh" "-c" "~/.config/niri/swayidle-lock.sh"];}
+        {command = ["sh" "-c" "${./swayidle-lock.sh}"];}
       ];
 
       # ── Window Rules ─────────────────────────────────────────────────────
@@ -440,4 +439,3 @@
     };
   };
 }
-
