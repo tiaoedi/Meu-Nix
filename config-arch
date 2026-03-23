@@ -218,3 +218,12 @@ sudo nix-collect-garbage --delete-older-than 7d
 
 # otimiza o store (deduplicação)
 sudo nix-store --optimise
+
+Quando o token expirar, o updatef vai dar erro 403 novamente. Para renovar:
+
+Acesse https://github.com/settings/tokens
+Clique no token antigo → Regenerate token
+Copie o novo token
+Atualize o arquivo local:
+
+bashnano ~/.config/nix/nix.conf
