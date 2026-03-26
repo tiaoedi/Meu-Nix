@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./terminals/alacritty.nix
     ./terminals/tmux.nix
     ./terminals/ghostty.nix
     ./editors/nixvim.nix
