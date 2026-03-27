@@ -1,7 +1,6 @@
 {...}: {
   programs.alacritty = {
     enable = true;
-
     settings = {
       window = {
         opacity = 0.8;
@@ -9,26 +8,29 @@
           columns = 120;
           lines = 30;
         };
+        padding = {
+          x = 10;
+          y = 10;
+        };
       };
-
-      scrolling.history = 50000;
-
+      cursor = {style = "Beam";};
+      scrolling = {history = 50000;};
       font = {
-        size = 13.0;
+        size = 15.0;
         normal = {
-          family = "Hack Nerd Font"; # ← era "hack"
+          family = "Hack Nerd Font";
           style = "Regular";
         };
         bold = {
-          family = "Hack Nerd Font"; # ← era "hack"
+          family = "Hack Nerd Font";
           style = "Bold";
         };
         italic = {
-          family = "Hack Nerd Font"; # ← era "hack"
+          family = "Hack Nerd Font";
           style = "Italic";
         };
         bold_italic = {
-          family = "Hack Nerd Font"; # ← era "monospace"
+          family = "Hack Nerd Font";
           style = "Bold Italic";
         };
       };
@@ -58,13 +60,14 @@
           white = "#ffffff";
         };
       };
-
-      keyboard.bindings = [
-        {
-          key = "F11";
-          action = "ToggleFullscreen";
-        }
-      ];
+      keyboard = {
+        bindings = [
+          {
+            key = "F11";
+            action = "ToggleFullscreen";
+          }
+        ];
+      };
     };
   };
 }
