@@ -226,4 +226,7 @@ Clique no token antigo → Regenerate token
 Copie o novo token
 Atualize o arquivo local:
 
-bashnano ~/.config/nix/nix.conf
+vim ~/.config/nix/nix.conf
+
+rm -rf ~/.cache/oh-my-posh/
+exec zsh -l
