@@ -216,5 +216,7 @@ Atualize o arquivo local:
 
 vim ~/.config/nix/nix.conf
 
+sudo rm ~/.config/alacritty/alacritty.toml.hm-bak
+
 rm -rf ~/.cache/oh-my-posh/
 exec zsh -l
