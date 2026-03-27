@@ -30,8 +30,8 @@
     opener = {
       edit = [
         {
-          run = ''${"EDITOR:-vi"} "$@"'';
-          desc = "$EDITOR";
+          run = ''nvim "$@"'';
+          desc = "nvim";
           block = true;
           for = "unix";
         }

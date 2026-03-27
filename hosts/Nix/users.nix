@@ -49,6 +49,9 @@ in {
       # Enable zsh plugins via NixOS module options
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
+      interactiveShellInit = ''
+        source /etc/profiles/per-user/pc120/etc/profile.d/hm-session-vars.sh
+      '';
     };
   };
 }
