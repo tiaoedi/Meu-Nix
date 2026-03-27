@@ -39,12 +39,12 @@ in {
 
   environment.shells = with pkgs; [zsh];
   environment.systemPackages = with pkgs; [lsd fzf git];
- programs = {
+  programs = {
     zsh = {
       ohMyZsh = {
         enable = true;
         theme = "ys";
-        plugins = [ "git" ];
+        plugins = ["git"];
       };
       # Enable zsh plugins via NixOS module options
       autosuggestions.enable = true;
