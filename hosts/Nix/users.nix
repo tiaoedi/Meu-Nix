@@ -39,19 +39,16 @@ in {
 
   environment.shells = with pkgs; [zsh];
   environment.systemPackages = with pkgs; [lsd fzf git];
-  programs = {
+ programs = {
     zsh = {
       ohMyZsh = {
         enable = true;
         theme = "ys";
-        plugins = ["git"];
+        plugins = [ "git" ];
       };
       # Enable zsh plugins via NixOS module options
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
-      interactiveShellInit = ''
-        source /etc/profiles/per-user/pc120/etc/profile.d/hm-session-vars.sh
-      '';
     };
   };
 }
