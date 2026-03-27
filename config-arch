@@ -1,21 +1,9 @@
 
-https://l0sp-my.sharepoint.com/:x:/g/personal/pclinux_l0sp_onmicrosoft_com/EblXr8yh1xRAgHMthOv-0RgB-becK0iVBadCqPJwMssEtA?e=WBQjqz
-
-omf install lambda   
-
-#dolphin admin
-ctl + shift + alt + a
-
-win11
-irm "https://christitus.com/win" | iex
-
-
 sudo systemctl restart NetworkManager
 
 smb
 smb://192.168.1.125/programas/
 
-/home/qbt
 
 sudo chattr -i /etc/resolv.conf
 
