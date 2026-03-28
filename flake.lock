@@ -27,11 +27,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1774488761,
-        "narHash": "sha256-GqFT8T9pyB+ixU6ZT8+sAS9I8Ob5UOCrEApiSZH+3UI=",
+        "lastModified": 1774680956,
+        "narHash": "sha256-o69ukFFttZytCJp1dqjNt0NR1ERa2MmnZi6E6Tg97+0=",
         "owner": "kamadorueda",
         "repo": "alejandra",
-        "rev": "fa23b4f0ba62657d8efeb9bcee22dfeba8acfa3d",
+        "rev": "09b40ebdd0a96b6d70849547a79c5a8ee93e646e",
         "type": "github"
       },
       "original": {
