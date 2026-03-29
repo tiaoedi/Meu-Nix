@@ -204,6 +204,12 @@ sudo nix-collect-garbage -d
 # ou mantém as últimas 3 gerações
 sudo nix-collect-garbage --delete-older-than 7d
 
+#apaga todas as gerações
+sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old
+
+#limpa tudo
+sudo nix-collect-garbage -d
+
 # otimiza o store (deduplicação)
 sudo nix-store --optimise
 
