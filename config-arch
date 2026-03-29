@@ -42,18 +42,6 @@ DNSStubListener=no
 #ReadEtcHosts=yes
 
 
-
-nameserver 192.168.1.40
-nameserver 192.168.1.41
-nameserver 1.1.1.1
-
-
-### tailscale immich
-https://chatgpt.com/share/68f83fde-bb7c-8001-8d92-7a332fccc255
-
-
-http://100.89.135.45/index.php/apps/dashboard/
-
 ### editar lxc
 pct stop 110
 vim /etc/pve/lxc/110.conf
