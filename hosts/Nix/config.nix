@@ -1,14 +1,16 @@
 #bv 💫 https://github.com/JaKooLit 💫 #
 # Main default config
-{
-  pkgs,
-  host,
-  username,
-  options,
-  ...
-}: let
+{ pkgs
+, lib
+, host
+, username
+, options
+, ...
+}:
+let
   inherit (import ./variables.nix) keyboardLayout;
-in {
+in
+{
   imports = [
     ./hardware.nix
     ./users.nix
@@ -51,7 +53,7 @@ in {
         "usbhid"
         "sd_mod"
       ];
-      kernelModules = [];
+      kernelModules = [ ];
     };
 
     # Needed For Some Steam Games
@@ -129,7 +131,7 @@ in {
   networking = {
     networkmanager.enable = true;
     hostName = "Nix";
-    timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
+    timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
   };
 
   # Set your time zone.
@@ -230,7 +232,7 @@ in {
   };
 
   systemd.services.flatpak-repo = {
-    path = [pkgs.flatpak];
+    path = [ pkgs.flatpak ];
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
@@ -313,8 +315,8 @@ in {
         "nix-command"
         "flakes"
       ];
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
     gc = {
       automatic = true;
@@ -328,15 +330,41 @@ in {
   services.tailscale.enable = true;
 
   # Virtualization / Containers
-  virtualisation.libvirtd.enable = true;
+  # Virtualization / Containers
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.runAsRoot = true;
+    extraConfig = ''
+      secret_encryption_key_file = ""
+    '';
+  };
   programs.virt-manager.enable = true;
   #virtualisation.waydroid.enable = true;
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
+  systemd.services.libvirtd.serviceConfig.LoadCredentialEncrypted = lib.mkForce "";
   virtualisation.podman = {
-    enable = true;
+    enable = false;
     dockerCompat = false;
-    defaultNetwork.settings.dns_enabled = true;
+    defaultNetwork.settings.dns_enabled = false;
+  };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/libvirt/secrets 0700 root root -"
+  ];
+
+  systemd.services.libvirtd-credentials = {
+    description = "Generate libvirtd encryption credentials";
+    before = [ "libvirtd.service" ];
+    wantedBy = [ "libvirtd.service" ];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      if [ ! -f /var/lib/libvirt/secrets/secrets-encryption-key ]; then
+        ${pkgs.openssl}/bin/openssl rand 32 > /tmp/libvirt-rawkey
+        systemd-creds encrypt --name=secrets-encryption-key /tmp/libvirt-rawkey /var/lib/libvirt/secrets/secrets-encryption-key
+        rm /tmp/libvirt-rawkey
+      fi
+    '';
   };
 
   # OpenGL
@@ -373,7 +401,7 @@ in {
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [80 443];
+    allowedTCPPorts = [ 80 443 ];
     allowedUDPPortRanges = [
       {
         from = 4000;
