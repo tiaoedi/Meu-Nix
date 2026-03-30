@@ -338,7 +338,7 @@ in {
     '';
   };
   programs.virt-manager.enable = true;
-  #virtualisation.waydroid.enable = true;
+  virtualisation.waydroid.enable = true;
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
   systemd.services.libvirtd.serviceConfig.LoadCredentialEncrypted = lib.mkForce "";
