@@ -58,3 +58,7 @@ alias baixarv="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestau
 #SAVEHIST=10000
 #setopt appendhistory
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/powerlevel10k_modern.omp.json)"
+
+alias updateall="cd ~/Meu-Nix && updatef && update"
+
+alias noctsave="noctalia-shell ipc call state all > ~/Meu-Nix/modules/home/noctalia.json && cd ~/Meu-Nix && git add . && update"

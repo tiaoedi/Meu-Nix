@@ -214,3 +214,8 @@ sudo rm ~/.config/alacritty/alacritty.toml.hm-bak
 
 rm -rf ~/.cache/oh-my-posh/
 exec zsh -l
+
+noctsave — salva configs do Noctalia e rebuilda
+updateall — atualiza flake e rebuilda o sistema
+updatef — atualiza só o flake.lock
+update — rebuilda o sistema
