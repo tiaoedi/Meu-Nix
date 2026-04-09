@@ -204,7 +204,7 @@
           hotkey-overlay.title = "Lock the Screen: swaylock";
         };
         "Mod+Print".action.spawn = ["flameshot"];
-        "Mod+X".action.spawn = ["sh" "-c" "qs -c noctalia-shell ipc call sessionMenu toggle"];
+        "Mod+X".action.spawn = ["sh" "-c" "noctalia-shell ipc call sessionMenu toggle"];
         "Mod+F4".action.spawn = ["gimp"];
         "Mod+F3" = {
           action.spawn = ["firefox"];
@@ -229,7 +229,7 @@
           action.spawn = ["rofi" "-show" "drun"];
           hotkey-overlay.title = "Run an Application: rofi";
         };
-        "Mod+F12".action.spawn = ["sh" "-c" "qs -c noctalia-shell ipc call launcher toggle"];
+        "Mod+F12".action.spawn = ["sh" "-c" "noctalia-shell ipc call launcher toggle"];
 
         # Orca
         "Super+Alt+S" = {
