@@ -333,8 +333,8 @@
       "useOriginalImages": false,
       "overviewBlur": 0.4,
       "overviewTint": 0.6,
-      "useWallhaven": false,
-      "wallhavenQuery": "",
+      "useWallhaven": true,
+      "wallhavenQuery": "mon",
       "wallhavenSorting": "relevance",
       "wallhavenOrder": "desc",
       "wallhavenCategories": "111",
@@ -678,7 +678,7 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "HDMI-A-1": "/home/pc120/Pictures/Wallpapers/wallhaven_zy8l5w.jpg"
+      "HDMI-A-1": "/home/pc120/Pictures/Wallpapers/wallhaven_p2ywr9.jpg"
     },
     "desktopWidgetsEditMode": false,
     "display": {
