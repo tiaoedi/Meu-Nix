@@ -161,13 +161,6 @@
             "textColor": "none"
           },
           {
-            "applyToAllMonitors": false,
-            "displayMode": "onhover",
-            "iconColor": "none",
-            "id": "Brightness",
-            "textColor": "none"
-          },
-          {
             "colorizeDistroLogo": false,
             "colorizeSystemIcon": "none",
             "colorizeSystemText": "none",
@@ -699,7 +692,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1775703441000
+      "lastSeenTs": 1775741808000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.6"
