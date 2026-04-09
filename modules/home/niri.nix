@@ -134,7 +134,7 @@
 
       # ── Autostart ────────────────────────────────────────────────────────
       spawn-at-startup = [
-        {command = ["sh" "-c" "qs -c ~/.config/quickshell/noctalia-shell"];}
+        {command = ["sh" "-c" "noctalia-shell"];}
         {command = ["xwayland-satellite"];}
         {command = ["kdeconnect-indicator"];}
         {command = ["sh" "-c" "nm-applet --indicator"];}
