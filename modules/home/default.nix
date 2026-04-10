@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   imports = [
     #./terminals/alacritty.nix
     ./terminals/tmux.nix
