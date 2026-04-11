@@ -1,16 +1,15 @@
 #bv 💫 https://github.com/JaKooLit 💫 #
 # Main default config
-{ pkgs
-, lib
-, host
-, username
-, options
-, ...
-}:
-let
-  inherit (import ./variables.nix) keyboardLayout;
-in
 {
+  pkgs,
+  lib,
+  host,
+  username,
+  options,
+  ...
+}: let
+  inherit (import ./variables.nix) keyboardLayout;
+in {
   imports = [
     ./hardware.nix
     ./users.nix
@@ -39,7 +38,7 @@ in
       "modprobe.blacklist=sp5100_tco" # watchdog for AMD
       "modprobe.blacklist=iTCO_wdt" # watchdog for Intel
     ];
-    kernelModules = [ "btintel" "bluetooth" ];
+    kernelModules = ["btintel" "bluetooth"];
     # This is for OBS Virtual Cam Support
     #kernelModules = [ "v4l2loopback" ];
     #  extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
@@ -53,7 +52,7 @@ in
         "usbhid"
         "sd_mod"
       ];
-      kernelModules = [ ];
+      kernelModules = [];
     };
 
     # Needed For Some Steam Games
@@ -131,7 +130,7 @@ in
   networking = {
     networkmanager.enable = true;
     hostName = "Nix";
-    timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
+    timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
   };
 
   # Set your time zone.
@@ -232,7 +231,7 @@ in
   };
 
   systemd.services.flatpak-repo = {
-    path = [ pkgs.flatpak ];
+    path = [pkgs.flatpak];
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
@@ -314,8 +313,8 @@ in
         "nix-command"
         "flakes"
       ];
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
     gc = {
       automatic = true;
@@ -354,8 +353,8 @@ in
 
   systemd.services.libvirtd-credentials = {
     description = "Generate libvirtd encryption credentials";
-    before = [ "libvirtd.service" ];
-    wantedBy = [ "libvirtd.service" ];
+    before = ["libvirtd.service"];
+    wantedBy = ["libvirtd.service"];
     serviceConfig.Type = "oneshot";
     script = ''
       if [ ! -f /var/lib/libvirt/secrets/secrets-encryption-key ]; then
@@ -367,7 +366,7 @@ in
   };
 
   # OpenGL
-  hardware.firmware = with pkgs; [ linux-firmware ];
+  hardware.firmware = with pkgs; [linux-firmware];
   hardware.graphics = {
     enable = true;
   };
@@ -401,7 +400,7 @@ in
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 80 443 ];
+    allowedTCPPorts = [80 443];
     allowedUDPPortRanges = [
       {
         from = 4000;
