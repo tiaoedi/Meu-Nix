@@ -16,7 +16,6 @@ alias lt='eza -a --tree --level=1 --icons'
 ##### Minhas alias #######
 alias upall="cd ~/Meu-Nix && git add . && noctsave &&  updatef && update && nixpush"
 alias update="sudo nixos-rebuild switch --flake /home/pc120/Meu-Nix#Nix"
-alias nixpush='git add . && git commit -m "nixos update" && git push'
 alias updatef="sudo nix flake update"
 alias ff="fastfetch"
 alias vnc="vim Meu-Nix/hosts/Nix/config.nix"
