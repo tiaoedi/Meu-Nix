@@ -1,221 +1,210 @@
+# 🌙 Meu-Nix — Documentação do Setup
 
+> NixOS com Niri + Noctalia Shell  
+> Repositório: https://github.com/tiaoedi/Meu-Nix
+
+---
+
+## 🖥️ Sistema
+
+| Item | Valor |
+|------|-------|
+| OS | NixOS 26.05 (unstable) |
+| Host | Nix |
+| Usuário | pc120 |
+| Placa-mãe | ASUS PRIME B550M-A |
+| GPU | AMD |
+| Compositor | Niri |
+| Shell | Noctalia Shell |
+| Login Manager | Ly |
+| Terminal | Ghostty |
+| Editor | Nixvim |
+
+---
+
+## ⚡ Aliases principais
+
+| Alias | Descrição |
+|-------|-----------|
+| `update` | Rebuilda o sistema (`nixos-rebuild switch`) |
+| `updatef` | Atualiza os inputs do `flake.lock` |
+| `updateall` | Atualiza flake e rebuilda o sistema |
+| `noctsave` | Salva configs do Noctalia e rebuilda |
+| `nixpush` | Commit + push para o GitHub |
+| `nixpush "mensagem"` | Commit com mensagem personalizada |
+| `ff` | Fastfetch |
+| `ya` | Yazi (gerenciador de arquivos) |
+| `sr` | Reboot |
+| `nl` | Lista gerações do NixOS |
+| `ndn` | Deleta gerações antigas |
+
+---
+
+## ⌨️ Atalhos do Niri
+
+| Tecla | Ação |
+|-------|------|
+| `Mod+X` | Menu de sessão (logout, reboot, etc.) |
+| `Mod+F5` | Clipboard do Noctalia |
+| `Mod+F12` | Launcher do Noctalia |
+| `Mod+Print` | Screenshot (Flameshot) |
+| `Mod+F4` | GIMP |
+| `Mod+F6` | VLC |
+
+---
+
+## 🔧 Manutenção NixOS
+
+```sh
+# Rebuildar o sistema
+update
+
+# Atualizar flake e rebuildar
+updateall
+
+# Listar gerações
+nl
+
+# Remover gerações antigas (mais de 7 dias)
+sudo nix-collect-garbage --delete-older-than 7d
+
+# Remover todas as gerações antigas
+sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old
+
+# Limpar tudo
+sudo nix-collect-garbage -d
+
+# Otimizar o store
+sudo nix-store --optimise
+
+# Formatar os arquivos nix
+nix fmt .
+```
+
+---
+
+## 🎨 Noctalia Shell
+
+```sh
+# Salvar configurações atuais e rebuildar
+noctsave
+
+# Abrir configurações
+noctalia-shell ipc call settings open
+
+# Toggling via IPC
+noctalia-shell ipc call launcher toggle
+noctalia-shell ipc call sessionMenu toggle
+noctalia-shell ipc call controlCenter toggle
+```
+
+---
+
+## 🌐 Rede
+
+```sh
+# Reiniciar NetworkManager
 sudo systemctl restart NetworkManager
 
-smb
-smb://192.168.1.125/programas/
+# Editar DNS (systemd-resolved)
+sudo vim /etc/systemd/resolved.conf
 
+# Tailscale
+sudo tailscale serve --bg 8096
+tailscale serve status
+sudo tailscale set --hostname portainer
+```
 
-sudo chattr -i /etc/resolv.conf
+---
 
- sudo truncate -s 0 /etc/resolv.conf  
+## 🖥️ Proxmox / LXC
 
- echo -e "nameserver 192.168.1.12\nnameserver 192.168.1.40\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf
-
- echo -e "nameserver 192.168.1.40\nnameserver 192.168.1.41\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf
-
-echo -e "nameserver 192.168.1.40\nameserver 192.168.1.12\nnameserver 192.168.1.41\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf
-
-sudo chattr +i /etc/resolv.conf
-
-
-######  systemd/resolved.conf
-
-sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
-sudo systemctl daemon-reload                                                                                   0 (2.008s) < 17:24:15
-sudo systemctl start systemd-resolved  
-sudo systemctl restart systemd-resolved   
-sudo systemctl enable systemd-resolved    
-systemctl enable --now systemd-resolved  
-code /etc/systemd/resolved.conf 
-
-DNS=192.168.1.12
-FallbackDNS=1.1.1.1
-#Domains=
-#DNSSEC=no
-#DNSOverTLS=no
-#MulticastDNS=yes
-#LLMNR=yes
-#Cache=yes
-#CacheFromLocalhost=no
-DNSStubListener=no
-#DNSStubListenerExtra=
-#ReadEtcHosts=yes
-
-
-### editar lxc
+```sh
+# Gerenciar LXCs
 pct stop 110
-vim /etc/pve/lxc/110.conf
-pct exec 110 -- bash
-pct enter 112
 pct start 110
+pct enter 112
+pct exec 110 -- bash
 
+# Virsh (VMs)
+sudo virsh list --all
+sudo virsh autostart proximox
+sudo virsh dominfo proximox | grep Autostart
+```
 
+---
 
-[Resolve]
+## 🔄 Git / Rollback
 
-DNS=100.112.254.57
-DNS=100.102.93.17 
-FallbackDNS=1.0.0.1#cloudflare-dns.com
-# Modo DoH: sempre tenta DoH, mas fica disponível caso não funcione
-DNSOverTLS=opportunistic          # pode usar “yes” ou “required”
-# Ativa DNSSEC (opcional, mas recomendado)
-DNSSEC=yes
-# Cache local (por padrão já está “yes”, mas fica explícito)
-Cache=yes
-[Resolve]
+```sh
+# Ver commits por data
+git log --oneline --format="%h %ai %s"
 
-DNS=100.112.254.57
-DNS=100.102.93.17 
-FallbackDNS=1.0.0.1#cloudflare-dns.com
-# Modo DoH: sempre tenta DoH, mas fica disponível caso não funcione
-DNSOverTLS=opportunistic          # pode usar “yes” ou “required”
-# Ativa DNSSEC (opcional, mas recomendado)
-DNSSEC=yes
-# Cache local (por padrão já está “yes”, mas fica explícito)
-Cache=yes
+# Reverter para um commit específico
+cd ~/Meu-Nix
+git checkout <hash> -- .
+sudo nixos-rebuild switch --flake .#Nix
+reboot
 
- df -h | grep sdb
+# Commitar o revert
+git add .
+git commit -m "revert to <data>"
+git push
+```
 
+---
 
- systemctl restart networking
- nano /etc/network/interfaces
- 
- # The loopback network interface
-auto lo
-#iface lo inet loopback
+## 📺 Mídia / FFMPEG
 
-# The primary network interface
-allow-hotplug ens18
-#iface ens18 inet dhcp
-iface ens18 inet static
-        address 192.168.1.115
-        netmask 255.255.255.0
-        gateway 192.168.1.1
-        dns-nameservers 1.1.1.1
-        dns-nameservers 1.0.01
+```sh
+# Converter H265 para MP4
+ffmpeg -f hevc -i video.h265 -c copy video.mp4
 
- 192.168.1.102/24
- 
- 192.168.1.5
- 
- rtsp://192.168.1.2:554
- 
- 
- http://192.168.1.50:8765
-
-/dev/dri/renderD128
-
-root@jellyfin:/# id jellyfin
-uid=107(jellyfin) gid=110(jellyfin) groups=110(jellyfin),44(video),993(render)
-
-
-
-/dev/dri/renderD128
-/dev/dri/renderD128
-
-oot@immich:~# id immich
-uid=999(immich) gid=996(immich) groups=996(immich),44(video),104(render)
-root@immich:~# 
-
-passe esta gpu  /dev/dri/renderD128 para webeui  no lxc proxmox
-
-
-# Generated by NetworkManager
-nameserver 100.112.254.57
-nameserver 1.1.1.1
-
-
-ffmpeg -f hevc -i 20251230121800577.h265 -c copy video.mp4    
-
-for f in *.h265; do                                                                
+# Converter todos os H265 em lote
+for f in *.h265; do
   ffmpeg -f hevc -err_detect ignore_err -i "$f" -c copy "${f%.h265}.mp4"
 done
 
-ffplay rtsp://admin:sonhoi30@192.168.1.3:554/onvif1  
+# Visualizar stream RTSP
+ffplay rtsp://admin:senha@192.168.1.3:554/onvif1
+```
 
-###waybar
-curl -fsSL get.axeni.de/ax-shell | bash
+---
 
-#virtmanager autostart
-sudo virsh list --all\n
- sudo virsh autostart proximox\n
- sudo virsh dominfo proximox | grep Autostart\n
- sudo virsh dominfo proximox\n
+## 🔑 GitHub Token (nix access)
 
- sudo libvirtd -v &
+Quando o `updatef` der erro 403:
 
- lxc.cgroup2.devices.allow: c 10:200 rwm
-lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file   
+1. Acesse https://github.com/settings/tokens
+2. Regenere o token
+3. Atualize em `~/.config/nix/nix.conf`
 
-100.123.91.45
+---
 
-sudo virsh list --all
+## 📦 Estrutura do Repositório
 
-sudo virsh autostart proximox
-
-sudo virsh dominfo proximox | grep Autostart
-
-QT_QPA_PLATFORM=xcb appimage-run ./Stacer-1.1.0-x64.AppImage
-
-https://github.com/tiaoedi/Meu-Nix
-
-sudo nixos-rebuild switch --flake /home/pc120/Meu-Nix#Nix
-
- sudo tailscale serve --bg http://127.0.0.1:5000
-
- tailscale serve status
- 
- sudo tailscale set --hostname portainer
-
- sudo tailscale serve --bg 8096
- 
- tailscale serve --https=443 off
-
-git log --oneline --format="%h %ai %s" | grep "2026-03-16"
-
-cd ~/Meu-Nix
-git checkout d697bfa -- .
-
-sudo nixos-rebuild switch --flake .#Nix 
-reboot
-
-cd ~/Meu-Nix
-git add .
-git commit -m "revert to 2026-03-16"
-git push
-
-nix fmt .
-
-# remove gerações antigas (mantém só a atual)
-sudo nix-collect-garbage -d
-
-# ou mantém as últimas 3 gerações
-sudo nix-collect-garbage --delete-older-than 7d
-
-#apaga todas as gerações
-sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old
-
-#limpa tudo
-sudo nix-collect-garbage -d
-
-# otimiza o store (deduplicação)
-sudo nix-store --optimise
-
-Quando o token expirar, o updatef vai dar erro 403 novamente. Para renovar:
-
-Acesse https://github.com/settings/tokens
-Clique no token antigo → Regenerate token
-Copie o novo token
-Atualize o arquivo local:
-
-vim ~/.config/nix/nix.conf
-
-sudo rm ~/.config/alacritty/alacritty.toml.hm-bak
-
-rm -rf ~/.cache/oh-my-posh/
-exec zsh -l
-
-noctsave — salva configs do Noctalia e rebuilda
-updateall — atualiza flake e rebuilda o sistema
-updatef — atualiza só o flake.lock
-update — rebuilda o sistema
+```
+Meu-Nix/
+├── flake.nix          # Entrypoint principal
+├── flake.lock         # Lock dos inputs
+├── hosts/
+│   └── Nix/
+│       ├── config.nix         # Configuração principal do sistema
+│       ├── hardware.nix       # Hardware específico
+│       ├── users.nix          # Usuários
+│       └── variables.nix      # Variáveis (teclado, etc.)
+├── modules/
+│   ├── home/                  # Configurações do home-manager
+│   │   ├── default.nix        # Importações do home
+│   │   ├── niri.nix           # Compositor Niri
+│   │   ├── noctalia.nix       # Noctalia Shell
+│   │   ├── noctalia.json      # Configurações exportadas do Noctalia
+│   │   ├── cli/               # Ferramentas de linha de comando
+│   │   ├── editors/           # Nixvim
+│   │   └── terminals/         # Ghostty, Tmux
+│   ├── packages.nix           # Pacotes do sistema
+│   ├── fonts.nix              # Fontes
+│   ├── pipewire.nix           # Áudio
+│   └── quickshell.nix         # Quickshell
+└── zshrc                      # Aliases e configuração do ZSH
+```
