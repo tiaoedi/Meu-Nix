@@ -7,49 +7,49 @@
 
 ## 🖥️ Sistema
 
-| Item | Valor |
-|------|-------|
-| OS | NixOS 26.05 (unstable) |
-| Host | Nix |
-| Usuário | pc120 |
-| Placa-mãe | ASUS PRIME B550M-A |
-| GPU | AMD |
-| Compositor | Niri |
-| Shell | Noctalia Shell |
-| Login Manager | Ly |
-| Terminal | Ghostty |
-| Editor | Nixvim |
+| Item          | Valor                  |
+| ------------- | ---------------------- |
+| OS            | NixOS 26.05 (unstable) |
+| Host          | Nix                    |
+| Usuário       | pc120                  |
+| Placa-mãe     | ASUS PRIME B550M-A     |
+| GPU           | AMD                    |
+| Compositor    | Niri                   |
+| Shell         | Noctalia Shell         |
+| Login Manager | Ly                     |
+| Terminal      | Ghostty                |
+| Editor        | Nixvim                 |
 
 ---
 
 ## ⚡ Aliases principais
 
-| Alias | Descrição |
-|-------|-----------|
-| `update` | Rebuilda o sistema (`nixos-rebuild switch`) |
-| `updatef` | Atualiza os inputs do `flake.lock` |
-| `updateall` | Atualiza flake e rebuilda o sistema |
-| `noctsave` | Salva configs do Noctalia e rebuilda |
-| `nixpush` | Commit + push para o GitHub |
-| `nixpush "mensagem"` | Commit com mensagem personalizada |
-| `ff` | Fastfetch |
-| `ya` | Yazi (gerenciador de arquivos) |
-| `sr` | Reboot |
-| `nl` | Lista gerações do NixOS |
-| `ndn` | Deleta gerações antigas |
+| Alias                | Descrição                                   |
+| -------------------- | ------------------------------------------- |
+| `update`             | Rebuilda o sistema (`nixos-rebuild switch`) |
+| `updatef`            | Atualiza os inputs do `flake.lock`          |
+| `updateall`          | Atualiza flake e rebuilda o sistema         |
+| `noctsave`           | Salva configs do Noctalia e rebuilda        |
+| `nixpush`            | Commit + push para o GitHub                 |
+| `nixpush "mensagem"` | Commit com mensagem personalizada           |
+| `ff`                 | Fastfetch                                   |
+| `ya`                 | Yazi (gerenciador de arquivos)              |
+| `sr`                 | Reboot                                      |
+| `nl`                 | Lista gerações do NixOS                     |
+| `ndn`                | Deleta gerações antigas                     |
 
 ---
 
 ## ⌨️ Atalhos do Niri
 
-| Tecla | Ação |
-|-------|------|
-| `Mod+X` | Menu de sessão (logout, reboot, etc.) |
-| `Mod+F5` | Clipboard do Noctalia |
-| `Mod+F12` | Launcher do Noctalia |
-| `Mod+Print` | Screenshot (Flameshot) |
-| `Mod+F4` | GIMP |
-| `Mod+F6` | VLC |
+| Tecla       | Ação                                  |
+| ----------- | ------------------------------------- |
+| `Mod+X`     | Menu de sessão (logout, reboot, etc.) |
+| `Mod+F5`    | Clipboard do Noctalia                 |
+| `Mod+F12`   | Launcher do Noctalia                  |
+| `Mod+Print` | Screenshot (Flameshot)                |
+| `Mod+F4`    | GIMP                                  |
+| `Mod+F6`    | VLC                                   |
 
 ---
 
@@ -80,6 +80,12 @@ sudo nix-store --optimise
 # Formatar os arquivos nix
 nix fmt .
 ```
+
+# Regenere o Noctalia
+
+noctalia-shell ipc call state all > ~/Meu-Nix/modules/home/noctalia.json
+head -3 ~/Meu-Nix/modules/home/noctalia.json
+cd ~/Meu-Nix && git add . && update
 
 ---
 
