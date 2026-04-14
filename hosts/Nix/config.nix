@@ -40,7 +40,7 @@ in {
       "modprobe.blacklist=iTCO_wdt" # watchdog for Intel
       "androidboot.hardware=waydroid"
     ];
-    kernelModules = ["btintel" "bluetooth" "ip_tables" "ip6_tables" "iptable_nat" "iptable_filter"];
+    kernelModules = ["btintel" "bluetooth" "ip_tables" "ip6_tables" "iptable_nat" "iptable_filter" "ipt_MASQUERADE" "ip6t_MASQUERADE"];
     # This is for OBS Virtual Cam Support
     #kernelModules = [ "v4l2loopback" ];
     #  extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];

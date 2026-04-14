@@ -213,4 +213,18 @@ Meu-Nix/
 │   ├── pipewire.nix           # Áudio
 │   └── quickshell.nix         # Quickshell
 └── zshrc                      # Aliases e configuração do ZSH
+
+
+# waydroid
+
+sudo waydroid init -s GAPPS -f
+sudo systemctl restart waydroid-container
+waydroid session start
+
+nix shell github:nix-community/NUR#repos.ataraxiasjel.waydroid-script -c sudo waydroid-script
+
+waydroid session stop
+sudo systemctl restart waydroid-container
+waydroid session start &
+waydroid show-full-ui
 ```
