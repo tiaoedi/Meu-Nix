@@ -228,5 +228,13 @@ sudo systemctl restart waydroid-container
 waydroid session start &
 waydroid show-full-ui
 
+# Backup dos dados
+sudo cp -r /var/lib/waydroid/data ~/waydroid-backup
+
+# Reinicializa
+sudo waydroid init -s GAPPS -f
+
+# Restaura os dados
+sudo cp -r ~/waydroid-backup/* /var/lib/waydroid/data/
 
 ```
