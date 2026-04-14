@@ -237,4 +237,7 @@ sudo waydroid init -s GAPPS -f
 # Restaura os dados
 sudo cp -r ~/waydroid-backup/* /var/lib/waydroid/data/
 
+#yandex
+flatpak run ru.yandex.Browser --no-sandbox
+
 ```
