@@ -403,7 +403,7 @@ in {
   # networking.firewall.enable = false;
 
   networking.firewall = {
-    enable = false;
+    enable = true;
     allowedTCPPorts = [80 443];
     allowedUDPPortRanges = [
       {
@@ -415,8 +415,9 @@ in {
         to = 8010;
       }
     ];
+    trustedInterfaces = ["virbr0" "waydroid0"];
+    checkReversePath = false;
   };
-
   programs.dconf.enable = true;
 
   environment.variables = {
