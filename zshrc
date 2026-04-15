@@ -60,4 +60,4 @@ eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/powerlevel10k_modern.o
 
 alias updateall="cd ~/Meu-Nix && updatef && update"
 
-alias noctsave="noctalia-shell ipc call state all > ~/Meu-Nix/modules/home/noctalia.json && cd ~/Meu-Nix && git add . && update"
+#alias noctsave="noctalia-shell ipc call state all > ~/Meu-Nix/modules/home/noctalia.json && cd ~/Meu-Nix && git add . && update"
