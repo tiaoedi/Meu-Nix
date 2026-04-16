@@ -240,4 +240,9 @@ sudo cp -r ~/waydroid-backup/* /var/lib/waydroid/data/
 #yandex
 flatpak run ru.yandex.Browser --no-sandbox
 
+
+##pagina inicial
+http://localhost:3000/
+https://dashboard-manager--tiaoedi.replit.app
+
 ```
