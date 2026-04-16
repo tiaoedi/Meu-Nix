@@ -119,6 +119,11 @@ sudo vim /etc/systemd/resolved.conf
 sudo tailscale serve --bg 8096
 tailscale serve status
 sudo tailscale set --hostname portainer
+
+# dns
+sudo tailscale up --accept-dns --operator=pc120 --ssh
+sudo tailscale up --accept-dns=false --operator=pc120 --ssh
+
 ```
 
 ---

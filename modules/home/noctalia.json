@@ -713,7 +713,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1776371506000
+      "lastSeenTs": 1776373903000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.7"
@@ -2101,7 +2101,7 @@
           }
         }
       ],
-      "timestamp": 1776342127
+      "timestamp": 1776372448
     },
     "ui": {
       "settingsSidebarExpanded": true
