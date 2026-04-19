@@ -327,7 +327,7 @@
       "overviewBlur": 0.4,
       "overviewTint": 0.6,
       "useWallhaven": true,
-      "wallhavenQuery": "moon",
+      "wallhavenQuery": "nix",
       "wallhavenSorting": "relevance",
       "wallhavenOrder": "desc",
       "wallhavenCategories": "111",
@@ -610,7 +610,7 @@
       "volumeStep": 5,
       "volumeOverdrive": false,
       "spectrumFrameRate": 30,
-      "visualizerType": "mirrored",
+      "visualizerType": "wave",
       "spectrumMirrored": true,
       "mprisBlacklist": [],
       "preferredPlayer": "",
@@ -692,7 +692,7 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "HDMI-A-1": "/home/pc120/Pictures/Wallpapers/wallhaven_85pkwo.jpg"
+      "HDMI-A-1": "/home/pc120/Pictures/Wallpapers/wallhaven_o5ky29.jpg"
     },
     "desktopWidgetsEditMode": false,
     "display": {
@@ -713,7 +713,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1776513229000
+      "lastSeenTs": 1776561002000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.7"
@@ -2101,7 +2101,7 @@
           }
         }
       ],
-      "timestamp": 1776463847
+      "timestamp": 1776519692
     },
     "ui": {
       "settingsSidebarExpanded": true
