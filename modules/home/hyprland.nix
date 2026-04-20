@@ -10,9 +10,9 @@
 
       # ── Variáveis ────────────────────────────────────────────────────────
       "$mainMod" = "SUPER";
-      "$files"   = "nautilus";
+      "$files" = "nautilus";
       "$browser" = "google-chrome-stable";
-      "$term"    = "ghostty";
+      "$term" = "kitty";
 
       # ── Ambiente ─────────────────────────────────────────────────────────
       env = [
@@ -46,8 +46,8 @@
 
       # ── Geral ────────────────────────────────────────────────────────────
       general = {
-        gaps_in = 10;
-        gaps_out = 10;
+        gaps_in = 5;
+        gaps_out = 5;
         border_size = 2;
         "col.active_border" = "rgba(7aa2f7aa) rgba(c4a7e7aa) 45deg";
         "col.inactive_border" = "rgba(414868aa)";
@@ -198,12 +198,13 @@
 
         # Grupos
         "$mainMod, G, togglegroup"
-      ] ++ (builtins.concatLists (builtins.genList (i:
-        let ws = toString (i + 1); in [
-          "$mainMod, ${ws}, workspace, ${ws}"
-          "$mainMod SHIFT, ${ws}, movetoworkspace, ${ws}"
-        ]
-      ) 9));
+      ] ++ (builtins.concatLists (builtins.genList
+        (i:
+          let ws = toString (i + 1); in [
+            "$mainMod, ${ws}, workspace, ${ws}"
+            "$mainMod SHIFT, ${ws}, movetoworkspace, ${ws}"
+          ]
+        ) 9));
 
       # Redimensionar
       binde = [
