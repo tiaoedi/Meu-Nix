@@ -17,5 +17,6 @@
     ./niri.nix
     ./hyprland.nix
     ./noctalia.nix
+    ./overview-toggle.nix
   ];
 }

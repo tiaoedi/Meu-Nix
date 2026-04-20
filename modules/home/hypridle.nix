@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   xdg.configFile."hypr/hypridle.conf".text = ''
     general {
       after_sleep_cmd = hyprctl dispatch dpms on && sleep 2 && pidof noctalia-shell || noctalia-shell &

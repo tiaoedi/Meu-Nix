@@ -1,10 +1,13 @@
-{ pkgs, inputs, username, ... }: {
-
+{
+  pkgs,
+  inputs,
+  username,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     enable = true;
 
     settings = {
-
       # ── Monitor ──────────────────────────────────────────────────────────
       monitor = "HDMI-A-1,1920x1080@60,0x0,1";
 
@@ -114,101 +117,108 @@
         "wl-paste --watch cliphist store"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-
       ];
 
       # ── Keybinds ─────────────────────────────────────────────────────────
-      bind = [
-        # Sistema
-        "$mainMod SHIFT, R, exec, hyprctl reload"
-        "$mainMod SHIFT, Q, killactive"
-        "$mainMod, Q, killactive"
-        "$mainMod SHIFT, E, exit"
-        "$mainMod, F, fullscreen"
-        "$mainMod, V, togglefloating"
+      bind =
+        [
+          # Sistema
+          "$mainMod SHIFT, R, exec, hyprctl reload"
+          "$mainMod SHIFT, Q, killactive"
+          "$mainMod, Q, killactive"
+          "$mainMod SHIFT, E, exit"
+          "$mainMod, F, fullscreen"
+          "$mainMod, V, togglefloating"
 
-        # Apps
-        "$mainMod, Return, exec, $term"
-        "$mainMod, T, exec, $term"
-        "$mainMod SHIFT, Return, exec, $files"
-        "$mainMod, F1, exec, brave"
-        "$mainMod, F2, exec, $browser"
-        "$mainMod, F3, exec, firefox"
-        "$mainMod, F4, exec, gimp"
-        "$mainMod, F5, exec, noctalia-shell ipc call launcher clipboard"
-        "$mainMod, F6, exec, vlc"
-        "$mainMod, F8, exec, $files"
-        "$mainMod, F11, exec, rofi -show drun -show-icons"
-        "$mainMod, F12, exec, noctalia-shell ipc call launcher toggle"
-        "$mainMod, X, exec, noctalia-shell ipc call sessionMenu toggle"
-        "$mainMod, D, exec, fuzzel"
-        "$mainMod, E, exec, code"
-        "SUPER ALT, L, exec, swaylock"
+          # Apps
+          "$mainMod, Return, exec, $term"
+          "$mainMod, T, exec, $term"
+          "$mainMod SHIFT, Return, exec, $files"
+          "$mainMod, F1, exec, brave"
+          "$mainMod, F2, exec, $browser"
+          "$mainMod, F3, exec, firefox"
+          "$mainMod, F4, exec, gimp"
+          "$mainMod, F5, exec, noctalia-shell ipc call launcher clipboard"
+          "$mainMod, F6, exec, vlc"
+          "$mainMod, F8, exec, $files"
+          "$mainMod, F11, exec, rofi -show drun -show-icons"
+          "$mainMod, P, exec, grimblast copy area"
+          "$mainMod, A, exec, rofi -show window"
+          "$mainMod, F12, exec, noctalia-shell ipc call launcher toggle"
+          "$mainMod, X, exec, noctalia-shell ipc call sessionMenu toggle"
+          "$mainMod, D, exec, fuzzel"
+          "$mainMod, E, exec, code"
+          "SUPER ALT, L, exec, swaylock"
+          "$mainMod, O, exec, overview-toggle"
 
-        # Screenshot
-        ", Print, exec, flameshot"
-        "CTRL, Print, exec, flameshot screen"
-        "ALT, Print, exec, flameshot gui"
+          # Screenshot
+          ", Print, exec, flameshot"
+          "CTRL, Print, exec, flameshot screen"
+          "ALT, Print, exec, flameshot gui"
 
-        # Foco
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
-        "$mainMod, H, movefocus, l"
-        "$mainMod, L, movefocus, r"
-        "$mainMod, K, movefocus, u"
-        "$mainMod, J, movefocus, d"
+          # Foco
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
+          "$mainMod, H, movefocus, l"
+          "$mainMod, L, movefocus, r"
+          "$mainMod, K, movefocus, u"
+          "$mainMod, J, movefocus, d"
 
-        # Mover janelas
-        "$mainMod CTRL, H, movewindow, l"
-        "$mainMod CTRL, L, movewindow, r"
-        "$mainMod CTRL, K, movewindow, u"
-        "$mainMod CTRL, J, movewindow, d"
-        "$mainMod SHIFT, Left, exec, hyprctl dispatch movewindow l"
-        "$mainMod SHIFT, Right, exec, hyprctl dispatch movewindow r"
-        "$mainMod SHIFT, Up, exec, hyprctl dispatch movewindow u"
-        "$mainMod SHIFT, Down, exec, hyprctl dispatch movewindow d"
+          # Mover janelas
+          "$mainMod CTRL, H, movewindow, l"
+          "$mainMod CTRL, L, movewindow, r"
+          "$mainMod CTRL, K, movewindow, u"
+          "$mainMod CTRL, J, movewindow, d"
+          "$mainMod SHIFT, Left, exec, hyprctl dispatch movewindow l"
+          "$mainMod SHIFT, Right, exec, hyprctl dispatch movewindow r"
+          "$mainMod SHIFT, Up, exec, hyprctl dispatch movewindow u"
+          "$mainMod SHIFT, Down, exec, hyprctl dispatch movewindow d"
 
-        # Workspaces
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
-        "$mainMod, period, workspace, e+1"
-        "$mainMod, comma, workspace, e-1"
-        "$mainMod, tab, workspace, m+1"
-        "$mainMod SHIFT, tab, workspace, m-1"
-        "ALT, tab, workspace, m+1"
-        "ALT SHIFT, tab, workspace, m-1"
-        "$mainMod SHIFT, U, movetoworkspace, special"
-        "$mainMod, U, togglespecialworkspace,"
+          # Workspaces
+          "$mainMod, mouse_down, workspace, e+1"
+          "$mainMod, mouse_up, workspace, e-1"
+          "$mainMod, period, workspace, e+1"
+          "$mainMod, comma, workspace, e-1"
+          "$mainMod, tab, workspace, m+1"
+          "$mainMod SHIFT, tab, workspace, m-1"
+          "ALT, tab, workspace, m+1"
+          "ALT SHIFT, tab, workspace, m-1"
+          "$mainMod SHIFT, U, movetoworkspace, special"
+          "$mainMod, U, togglespecialworkspace,"
 
-        # Layout master
-        "$mainMod, I, layoutmsg, addmaster"
-        "$mainMod CTRL, Return, layoutmsg, swapwithmaster"
+          # Layout master
+          "$mainMod, I, layoutmsg, addmaster"
+          "$mainMod CTRL, Return, layoutmsg, swapwithmaster"
 
-        # Mídia
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioNext, exec, playerctl next"
-        ", XF86AudioPrev, exec, playerctl previous"
-        ", XF86AudioStop, exec, playerctl stop"
+          # Mídia
+          ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"
+          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"
+          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+          ", XF86AudioPlay, exec, playerctl play-pause"
+          ", XF86AudioNext, exec, playerctl next"
+          ", XF86AudioPrev, exec, playerctl previous"
+          ", XF86AudioStop, exec, playerctl stop"
 
-        # Brilho
-        ", XF86MonBrightnessUp, exec, brightnessctl --class=backlight set +10%"
-        ", XF86MonBrightnessDown, exec, brightnessctl --class=backlight set 10%-"
+          # Brilho
+          ", XF86MonBrightnessUp, exec, brightnessctl --class=backlight set +10%"
+          ", XF86MonBrightnessDown, exec, brightnessctl --class=backlight set 10%-"
 
-        # Grupos
-        "$mainMod, G, togglegroup"
-      ] ++ (builtins.concatLists (builtins.genList
-        (i:
-          let ws = toString (i + 1); in [
-            "$mainMod, ${ws}, workspace, ${ws}"
-            "$mainMod SHIFT, ${ws}, movetoworkspace, ${ws}"
-          ]
-        ) 9));
+          # Grupos
+          "$mainMod, G, togglegroup"
+        ]
+        ++ (builtins.concatLists (builtins.genList
+          (
+            i: let
+              ws = toString (i + 1);
+            in [
+              "$mainMod, ${ws}, workspace, ${ws}"
+              "$mainMod SHIFT, ${ws}, movetoworkspace, ${ws}"
+            ]
+          )
+          9));
 
       # Redimensionar
       binde = [
