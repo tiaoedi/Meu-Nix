@@ -710,7 +710,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1776653888000
+      "lastSeenTs": 1776690079000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.7"
@@ -2098,7 +2098,7 @@
           "path": "Vesper"
         }
       ],
-      "timestamp": 1776643152
+      "timestamp": 1776690006
     },
     "ui": {
       "settingsSidebarExpanded": true

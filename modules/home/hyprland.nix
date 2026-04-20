@@ -1,8 +1,7 @@
-{
-  pkgs,
-  inputs,
-  username,
-  ...
+{ pkgs
+, inputs
+, username
+, ...
 }: {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -28,7 +27,7 @@
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         "QT_QPA_PLATFORMTHEME,qt6ct"
         "HYPRCURSOR_THEME,Bibata-Modern-Classic"
-        "HYPRCURSOR_SIZE,34"
+        "HYPRCURSOR_SIZE,24"
       ];
 
       # ── Input ────────────────────────────────────────────────────────────
@@ -211,9 +210,11 @@
         ]
         ++ (builtins.concatLists (builtins.genList
           (
-            i: let
+            i:
+            let
               ws = toString (i + 1);
-            in [
+            in
+            [
               "$mainMod, ${ws}, workspace, ${ws}"
               "$mainMod SHIFT, ${ws}, movetoworkspace, ${ws}"
             ]
