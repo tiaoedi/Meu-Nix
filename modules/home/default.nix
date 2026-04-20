@@ -15,6 +15,7 @@
     ./yazi
     ./overview.nix
     ./niri.nix
+    ./hyprland.nix
     ./noctalia.nix
   ];
 }

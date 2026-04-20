@@ -1,41 +1,38 @@
 {
   description = "Meu-Nix'NixOS-Hyprland";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.url = "github:nix-community/nixvim/main";
     alejandra.url = "github:kamadorueda/alejandra";
-
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ags = {
       type = "github";
       owner = "aylur";
       repo = "ags";
       ref = "v1";
     };
-
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
   outputs = inputs @ {
     self,
     nixpkgs,
@@ -47,7 +44,6 @@
     system = "x86_64-linux";
     host = "Nix";
     username = "pc120";
-
     pkgs = import nixpkgs {
       inherit system;
       config = {
@@ -59,7 +55,6 @@
     packages.${system} = {
       waybar-weather = waybarWeatherPkg;
     };
-
     nixosConfigurations = {
       "${host}" = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
@@ -81,58 +76,64 @@
           ./modules/nh.nix
           ./modules/polkit.nix
           ./modules/overlays/python-svg-fix.nix
-
-          # ✅ cache permanente do niri
+          # ✅ cache permanente
           {
             nix.settings = {
               extra-substituters = [
                 "https://niri.cachix.org"
-                "https://noctalia.cachix.org" # ← adicionar
+                "https://noctalia.cachix.org"
+                "https://hyprland.cachix.org"
               ];
               extra-trusted-public-keys = [
                 "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-                "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" # ← adicionar
+                "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+                "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
               ];
             };
           }
-
-          # ✅ arquivo de sessão para o ly
+          # ✅ sessões para o ly
           {
-            environment.etc."wayland-sessions/niri.desktop".text = ''
-              [Desktop Entry]
-              Name=niri
-              Comment=A scrollable-tiling Wayland compositor
-              Exec=niri-session
-              Type=Application
-            '';
+            environment.etc = {
+              "wayland-sessions/niri.desktop".text = ''
+                [Desktop Entry]
+                Name=niri
+                Comment=A scrollable-tiling Wayland compositor
+                Exec=niri-session
+                Type=Application
+              '';
+              "wayland-sessions/hyprland.desktop".text = ''
+                [Desktop Entry]
+                Name=Hyprland
+                Comment=A dynamic tiling Wayland compositor
+                Exec=Hyprland
+                Type=Application
+              '';
+            };
           }
-
           inputs.catppuccin.nixosModules.catppuccin
+          inputs.hyprland.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm-bak";
-
             home-manager.extraSpecialArgs = {
               inherit inputs system username host;
             };
-
             home-manager.users.${username} = {
               home.username = username;
               home.homeDirectory = "/home/${username}";
               home.stateVersion = "24.05";
-
               imports = [
                 ./modules/home/default.nix
                 niri.homeModules.niri
+                inputs.hyprland.homeManagerModules.default
               ];
             };
           }
         ];
       };
     };
-
     formatter.x86_64-linux = alejandra.defaultPackage.x86_64-linux;
   };
 }
