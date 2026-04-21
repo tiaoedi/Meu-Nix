@@ -250,4 +250,12 @@ flatpak run ru.yandex.Browser --no-sandbox
 http://localhost:3000/
 https://dashboard-manager--tiaoedi.replit.app
 
+# kitty Atalhos de Teclado
+Abrir nova aba: Ctrl + Shift + t
+Fechar aba atual: Ctrl + Shift + q (ou simplesmente digite exit no terminal)
+Próxima aba: Ctrl + Shift + Right (Seta para a direita)
+Aba anterior: Ctrl + Shift + Left (Seta para a esquerda)
+Renomear aba: Ctrl + Shift + alt + t
+
+
 ```
