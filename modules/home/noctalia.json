@@ -704,13 +704,13 @@
         "refresh_rate": 60,
         "x": 0,
         "y": 0,
-        "active_workspace": 2,
+        "active_workspace": 1,
         "vrr": false,
         "focused": true
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1776690079000
+      "lastSeenTs": 1776731329000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.7"

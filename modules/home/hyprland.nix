@@ -53,9 +53,13 @@
         border_size = 2;
         "col.active_border" = "rgba(7aa2f7aa) rgba(c4a7e7aa) 45deg";
         "col.inactive_border" = "rgba(414868aa)";
-        layout = "master";
+        layout = "scrolling";
         resize_on_border = true;
         extend_border_grab_area = 5;
+      };
+
+      scrolling = {
+        column_width = 0.5;
       };
 
       # ── Decoração ────────────────────────────────────────────────────────
