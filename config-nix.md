@@ -94,7 +94,9 @@ cd ~/Meu-Nix && git add . && update
 ```sh
 # Salvar configurações atuais e rebuildar
 noctsave
-
+# Regenere:
+noctalia-shell ipc call state all > ~/Meu-Nix/modules/home/noctalia.json
+head -3 ~/Meu-Nix/modules/home/noctalia.json
 # Abrir configurações
 noctalia-shell ipc call settings open
 

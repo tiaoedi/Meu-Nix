@@ -1,9 +1,9 @@
-{
-  pkgs,
-  inputs,
-  username,
-  ...
-}: let
+{ pkgs
+, inputs
+, username
+, ...
+}:
+let
   colresizeToggle = pkgs.writeShellScriptBin "colresize-toggle" ''
     CURRENT=$(hyprctl activewindow -j | jq '.size[0]')
     MONITOR=$(hyprctl monitors -j | jq '.[0].width')
@@ -14,8 +14,9 @@
       hyprctl dispatch layoutmsg "colresize +0.5"
     fi
   '';
-in {
-  home.packages = [colresizeToggle];
+in
+{
+  home.packages = [ colresizeToggle ];
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -73,7 +74,8 @@ in {
 
       scrolling = {
         column_width = 0.5;
-        fullscreen_on_one_column = true;
+        follow_focus = true;
+        fullscreen_on_one_column = false;
       };
 
       # ── Decoração ────────────────────────────────────────────────────────
@@ -234,9 +236,11 @@ in {
         ]
         ++ (builtins.concatLists (builtins.genList
           (
-            i: let
+            i:
+            let
               ws = toString (i + 1);
-            in [
+            in
+            [
               "$mainMod, ${ws}, workspace, ${ws}"
               "$mainMod SHIFT, ${ws}, movetoworkspace, ${ws}"
             ]
