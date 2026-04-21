@@ -1,7 +1,8 @@
-{ pkgs
-, inputs
-, username
-, ...
+{
+  pkgs,
+  inputs,
+  username,
+  ...
 }: let
   colresizeToggle = pkgs.writeShellScriptBin "colresize-toggle" ''
     CURRENT=$(hyprctl activewindow -j | jq '.size[0]')
@@ -14,7 +15,7 @@
     fi
   '';
 in {
-  home.packages = [ colresizeToggle ];
+  home.packages = [colresizeToggle];
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -233,11 +234,9 @@ in {
         ]
         ++ (builtins.concatLists (builtins.genList
           (
-            i:
-            let
+            i: let
               ws = toString (i + 1);
-            in
-            [
+            in [
               "$mainMod, ${ws}, workspace, ${ws}"
               "$mainMod SHIFT, ${ws}, movetoworkspace, ${ws}"
             ]
