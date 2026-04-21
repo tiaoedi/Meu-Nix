@@ -60,6 +60,7 @@
 
       scrolling = {
         column_width = 0.5;
+        fullscreen_on_one_column = true;
       };
 
       # ── Decoração ────────────────────────────────────────────────────────
@@ -82,7 +83,6 @@
           ignore_opacity = true;
           special = true;
           popups = true;
-
         };
       };
 
@@ -135,7 +135,9 @@
           "$mainMod SHIFT, Q, killactive"
           "$mainMod, Q, killactive"
           "$mainMod SHIFT, E, exit"
-          "$mainMod, F, fullscreen"
+          # "$mainMod, F, exec, ~/Meu-Nix/modules/home/scripts/colresize-toggle.sh"
+          "$mainMod, F, exec, ~/.config/hypr/scripts/colresize-toggle.sh"
+          "$mainMod SHIFT, F, fullscreen"
           "$mainMod, V, togglefloating"
 
           # Apps
