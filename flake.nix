@@ -105,7 +105,7 @@
                 [Desktop Entry]
                 Name=Hyprland
                 Comment=A dynamic tiling Wayland compositor
-                Exec=Hyprland
+                Exec=start-hyprland
                 Type=Application
               '';
             };
