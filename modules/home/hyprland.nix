@@ -61,8 +61,8 @@
       # ── Decoração ────────────────────────────────────────────────────────
       decoration = {
         rounding = 10;
-        active_opacity = 1.0;
-        inactive_opacity = 1.0;
+        active_opacity = 0.85;
+        inactive_opacity = 0.75;
         shadow = {
           enabled = true;
           range = 4;
@@ -71,9 +71,14 @@
         };
         blur = {
           enabled = true;
-          size = 9;
-          passes = 1;
-          vibrancy = 0.1696;
+          size = 10;
+          passes = 4;
+          new_optimizations = true;
+          xray = true;
+          ignore_opacity = true;
+          special = true;
+          popups = true;
+
         };
       };
 
