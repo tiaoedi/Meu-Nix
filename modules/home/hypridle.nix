@@ -3,7 +3,7 @@
     general {
       after_sleep_cmd = hyprctl dispatch dpms on && sleep 2 && pidof noctalia-shell || noctalia-shell &
       ignore_dbus_inhibit = true
-      lock_cmd = pidof hyprlock || hyprlock
+      lock_cmd = noctalia-shell ipc call lockScreen lock
     }
 
     listener {

@@ -127,7 +127,6 @@ in
         "kdeconnect-indicator"
         "nm-applet --indicator"
         "wl-paste --watch cliphist store"
-        "sleep 3 && systemctl --user start hypridle"
       ];
       # ── Keybinds ─────────────────────────────────────────────────────────
       bind =
