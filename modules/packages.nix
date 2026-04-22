@@ -164,7 +164,7 @@
     kdePackages.polkit-kde-agent-1
     tailscale
     firefox
-    #brave
+    brave
     # qt6ct
     #qt6.qtwayland
     #qt6Packages.qtstyleplugin-kvantum # kvantum
