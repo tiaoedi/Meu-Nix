@@ -132,16 +132,14 @@ in
 
       # ── Autostart ────────────────────────────────────────────────────────
       exec-once = [
-        "bash -c 'sleep 2 && hypridle'"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "noctalia-shell"
         "xwayland-satellite"
         "kdeconnect-indicator"
         "nm-applet --indicator"
         "wl-paste --watch cliphist store"
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
-
       # ── Keybinds ─────────────────────────────────────────────────────────
       bind =
         [
