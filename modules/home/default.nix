@@ -16,6 +16,7 @@
     ./overview.nix
     ./niri.nix
     ./hyprland.nix
+    ./hypridle.nix
     ./noctalia.nix
     ./overview-toggle.nix
   ];

@@ -132,6 +132,7 @@ in
 
       # ── Autostart ────────────────────────────────────────────────────────
       exec-once = [
+        "sleep 2 && systemctl --user start hypridle"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "noctalia-shell"
@@ -157,7 +158,7 @@ in
           "$mainMod, Return, exec, $term"
           "$mainMod, T, exec, $term"
           "$mainMod SHIFT, Return, exec, $files"
-          "$mainMod, F1, exec, brave"
+          "$mainMod, F1, exec, flatpak run com.brave.Browser"
           "$mainMod, F2, exec, $browser"
           "$mainMod, F3, exec, firefox"
           "$mainMod, F4, exec, gimp"

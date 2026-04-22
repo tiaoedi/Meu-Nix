@@ -2,7 +2,7 @@
   xdg.configFile."hypr/hypridle.conf".text = ''
     general {
       after_sleep_cmd = hyprctl dispatch dpms on && sleep 2 && pidof noctalia-shell || noctalia-shell &
-      ignore_dbus_inhibit = false
+      ignore_dbus_inhibit = true
       lock_cmd = pidof hyprlock || hyprlock
     }
 
