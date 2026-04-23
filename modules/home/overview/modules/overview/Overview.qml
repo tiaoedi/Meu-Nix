@@ -116,7 +116,7 @@ Scope {
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                     top: parent.top
-                    topMargin: 100
+                    topMargin: 20
                 }
 
                 Loader {
