@@ -1,9 +1,8 @@
-{ lib, ... }: {
-  home.file = {
-    ".config/quickshell/overview/shell.qml".source = ./overview/shell.qml;
-    ".config/quickshell/overview/common".source = ./overview/common;
-    ".config/quickshell/overview/modules".source = ./overview/modules;
-    ".config/quickshell/overview/services".source = ./overview/services;
-    ".config/quickshell/overview/assets".source = ./overview/assets;
-  };
+{ lib, pkgs, ... }: {
+  home.activation.seedOverviewCode = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    rm -rf "$HOME/.config/quickshell/overview"
+    mkdir -p "$HOME/.config/quickshell"
+    cp -RL ${./overview} "$HOME/.config/quickshell/overview"
+    chmod -R u+rwX "$HOME/.config/quickshell/overview"
+  '';
 }
