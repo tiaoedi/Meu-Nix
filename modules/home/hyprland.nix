@@ -143,6 +143,7 @@ in {
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "noctalia-shell"
+        "qs -c overview"
         "xwayland-satellite"
         "kdeconnect-indicator"
         "nm-applet --indicator"
