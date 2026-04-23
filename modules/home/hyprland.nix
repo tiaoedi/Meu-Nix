@@ -40,6 +40,28 @@ in
         "HYPRCURSOR_THEME,Bibata-Modern-Classic"
         "HYPRCURSOR_SIZE,24"
       ];
+
+      plugin = {
+        dynamic-cursors = {
+          enabled = true;
+          mode = "tilt";
+          shake = {
+            enabled = true;
+            threshold = 4.0;
+            factor = 1.5;
+            speed = 0.5;
+            influence = 0.5;
+            limit = 0.0;
+            timeout = 2000;
+            ipc = false;
+          };
+        };
+      };
+
+
+      cursor = {
+        enable_hyprcursor = true;
+      };
       # ── Input ────────────────────────────────────────────────────────────
       input = {
         kb_layout = "us";
@@ -132,6 +154,9 @@ in
       bind =
         [
           # Sistema
+          "$mainMod, equal, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '.float * 1.1')"
+          "$mainMod, minus, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '(.float * 0.9) | if . < 1 then 1 else . end')"
+          "$mainMod SHIFT, 0, exec, hyprctl -q keyword cursor:zoom_factor 1"
           "$mainMod SHIFT, R, exec, hyprctl reload"
           "$mainMod SHIFT, Q, killactive"
           "$mainMod, Q, killactive"
