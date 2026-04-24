@@ -314,9 +314,8 @@ Item {
                 }
                 Behavior on y {
                     animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
-                  }
-               
-              }
-         }
+                }
+            }
+        }
     }
 }
