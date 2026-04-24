@@ -4,7 +4,6 @@ import Quickshell
 import Quickshell.Wayland
 import Quickshell.Hyprland
 import Quickshell.Io
-import Quickshell.Io
 import "../../common"
 import "../../common/functions"
 import "../../common/widgets"
@@ -38,7 +37,7 @@ Item {
     property int workspaceZ: 0
     property int windowZ: 1
     property int windowDraggingZ: 99999
-    property real workspaceSpacing: 8
+    property real workspaceSpacing: 5
     property string wallpaperPath: ""
 
     Process {
@@ -46,8 +45,8 @@ Item {
         command: ["noctalia-shell", "ipc", "call", "wallpaper", "get", "HDMI-A-1"]
         running: GlobalStates.overviewOpen
         property string result: ""
-        onExited: root.wallpaperPath = result.trim()
         stdout: SplitParser { onRead: data => wallpaperProcess.result += data }
+        onExited: root.wallpaperPath = result.trim()
     }
 
     property int draggingFromWorkspace: -1
@@ -110,8 +109,9 @@ Item {
                                 anchors.fill: parent
                                 source: root.wallpaperPath ? "file://" + root.wallpaperPath : ""
                                 fillMode: Image.PreserveAspectCrop
-                                opacity: 0.6
+                                opacity: 0.5
                                 smooth: true
+                                layer.enabled: true
                             }
                             StyledText {
                                 anchors.centerIn: parent
@@ -155,6 +155,7 @@ Item {
                     }
                 }
             }
+        }
 
         Item { // Windows & focused workspace indicator
             id: windowSpace
