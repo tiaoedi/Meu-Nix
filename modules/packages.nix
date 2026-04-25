@@ -1,8 +1,7 @@
-{
-  pkgs,
-  inputs,
-  host,
-  ...
+{ pkgs
+, inputs
+, host
+, ...
 }: {
   services.power-profiles-daemon.enable = true;
 
@@ -150,7 +149,7 @@
     libnotify
     libsForQt5.qtstyleplugin-kvantum # kvantum
     libsForQt5.qt5ct
-    (mpv.override {scripts = [mpvScripts.mpris];}) # with tray
+    (mpv.override { scripts = [ mpvScripts.mpris ]; }) # with tray
     nvtopPackages.full
     openssl # required by Rainbow borders
     pciutils
@@ -184,7 +183,7 @@
     evince
     gtop
     dmidecode
-    #bitwarden-desktop
+    bitwarden-desktop
     capitaine-cursors
     libsForQt5.qt5.qttools
     python313Packages.tkinter
