@@ -29,7 +29,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell?rev=e162429b6fa4443a0b45e19a867277dcc25d506b";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
