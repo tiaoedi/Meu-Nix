@@ -22,10 +22,10 @@ in {
 
   programs = {
     steam = {
-      enable = false;
-      gamescopeSession.enable = false;
-      remotePlay.openFirewall = false;
-      dedicatedServer.openFirewall = false;
+      enable = true;
+      gamescopeSession.enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
     };
   };
 }

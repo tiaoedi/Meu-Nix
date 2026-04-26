@@ -144,7 +144,6 @@ in {
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "noctalia-shell"
         "qs -c overview"
-        "xwayland-satellite"
         "kdeconnect-indicator"
         "nm-applet --indicator"
         "wl-paste --watch cliphist store"
