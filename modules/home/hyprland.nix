@@ -95,7 +95,7 @@ in
       # ── Decoração ────────────────────────────────────────────────────────
       decoration = {
         rounding = 10;
-        active_opacity = 0.70;
+        active_opacity = 0.85;
         inactive_opacity = 0.60;
         shadow = {
           enabled = true;
