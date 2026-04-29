@@ -260,4 +260,16 @@ Aba anterior: Ctrl + Shift + Left (Seta para a esquerda)
 Renomear aba: Ctrl + Shift + alt + t
 
 
+### Docker Para desligar ###########
+cd /appdata/navidrome
+docker compose down
+
+#### ligar ###
+cd /appdata/navidrome
+docker compose up -d
+
+## Para apenas reiniciar ##
+cd /appdata/navidrome
+docker compose restart
+
 ```
