@@ -604,28 +604,84 @@
   },
   "templates": {
     "activeTemplates": [
-  { "id": "btop", "active": true },
-  { "id": "cava", "active": true },
-  { "id": "code", "active": true },
-  { "id": "discord-material", "active": true },
-  { "id": "discord-midnight", "active": true },
-  { "id": "emacs", "active": true },
-  { "id": "fuzzel", "active": true },
-  { "id": "gtk3", "active": true },
-  { "id": "gtk4", "active": true },
-  { "id": "helix", "active": true },
-  { "id": "hyprland", "active": true },
-  { "id": "hyprtoolkit", "active": true },
-  { "id": "kcolorscheme", "active": true },
-  { "id": "labwc", "active": true },
-  { "id": "mango", "active": true },
-  { "id": "niri", "active": true },
-  { "id": "noctalia", "active": true },
-  { "id": "pywalfox", "active": true },
-  { "id": "qtct", "active": true }
-],           
-
-    "enableUserTheming": false
+      {
+        "active": true,
+        "id": "btop"
+      },
+      {
+        "active": true,
+        "id": "cava"
+      },
+      {
+        "active": true,
+        "id": "code"
+      },
+      {
+        "active": true,
+        "id": "discord-material"
+      },
+      {
+        "active": true,
+        "id": "discord-midnight"
+      },
+      {
+        "active": true,
+        "id": "emacs"
+      },
+      {
+        "active": true,
+        "id": "fuzzel"
+      },
+      {
+        "active": true,
+        "id": "gtk3"
+      },
+      {
+        "active": true,
+        "id": "gtk4"
+      },
+      {
+        "active": true,
+        "id": "helix"
+      },
+      {
+        "active": true,
+        "id": "hyprland"
+      },
+      {
+        "active": true,
+        "id": "hyprtoolkit"
+      },
+      {
+        "active": true,
+        "id": "kcolorscheme"
+      },
+      {
+        "active": true,
+        "id": "labwc"
+      },
+      {
+        "active": true,
+        "id": "mango"
+      },
+      {
+        "active": true,
+        "id": "niri"
+      },
+      {
+        "active": true,
+        "id": "noctalia"
+      },
+      {
+        "active": true,
+        "id": "pywalfox"
+      },
+      {
+        "active": true,
+        "id": "qtct"
+      }
+    ],
+    "enableUserTheming": true
   },
   "ui": {
     "boxBorderEnabled": false,

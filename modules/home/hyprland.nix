@@ -260,5 +260,8 @@ in
         "$mainMod, mouse:273, resizewindow"
       ];
     };
+    extraConfig = ''
+      source = ~/.config/hypr/noctalia/hyprland.conf
+    '';
   };
 }
