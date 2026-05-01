@@ -196,7 +196,7 @@ Quando o `updatef` der erro 403:
 
 ## 📦 Estrutura do Repositório
 
-```
+````
 Meu-Nix/
 ├── flake.nix          # Entrypoint principal
 ├── flake.lock         # Lock dos inputs
@@ -272,4 +272,6 @@ docker compose up -d
 cd /appdata/navidrome
 docker compose restart
 
-```
+### Ventoy
+sudo NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#ventoy --impure -- -i /dev/sda```
+````
