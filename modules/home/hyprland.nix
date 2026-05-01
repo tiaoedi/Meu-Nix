@@ -37,7 +37,8 @@ in
         "QT_QPA_PLATFORM,wayland;xcb"
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         "QT_QPA_PLATFORMTHEME,qt6ct"
-        "HYPRCURSOR_THEME,Bibata-Modern-Classic"
+        "HYPRCURSOR_THEME,ArcAurora-Cursors"
+        "XCURSOR_THEME,ArcAurora-Cursors"
         "HYPRCURSOR_SIZE,24"
       ];
 
@@ -59,7 +60,7 @@ in
       };
 
       cursor = {
-        enable_hyprcursor = true;
+        enable_hyprcursor = false;
       };
       # ── Input ────────────────────────────────────────────────────────────
       input = {

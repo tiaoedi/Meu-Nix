@@ -1,8 +1,7 @@
-{
-  pkgs,
-  inputs,
-  host,
-  ...
+{ pkgs
+, inputs
+, host
+, ...
 }: {
   services.power-profiles-daemon.enable = true;
 
@@ -93,6 +92,9 @@
     bc
     wlsunset
     libsForQt5.qt5.qtmultimedia
+    kdePackages.kdenlive
+    ffmpeg
+    mediainfo
     kdePackages.qtmultimedia
     brightnessctl
     (btop.override {
@@ -141,6 +143,8 @@
     killall
     qmplay2-qt6
     qtcreator
+    ffmpeg
+    mediainfo
     kdePackages.qt6ct
     kdePackages.qtwayland
     kdePackages.qtstyleplugin-kvantum # kvantum
@@ -150,7 +154,7 @@
     libnotify
     libsForQt5.qtstyleplugin-kvantum # kvantum
     libsForQt5.qt5ct
-    (mpv.override {scripts = [mpvScripts.mpris];}) # with tray
+    (mpv.override { scripts = [ mpvScripts.mpris ]; }) # with tray
     nvtopPackages.full
     openssl # required by Rainbow borders
     pciutils
