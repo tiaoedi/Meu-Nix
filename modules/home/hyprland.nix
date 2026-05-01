@@ -1,9 +1,9 @@
-{ pkgs
-, inputs
-, username
-, ...
-}:
-let
+{
+  pkgs,
+  inputs,
+  username,
+  ...
+}: let
   colresizeToggle = pkgs.writeShellScriptBin "colresize-toggle" ''
     CURRENT=$(hyprctl activewindow -j | jq '.size[0]')
     MONITOR=$(hyprctl monitors -j | jq '.[0].width')
@@ -14,9 +14,8 @@ let
       hyprctl dispatch layoutmsg "colresize +0.5"
     fi
   '';
-in
-{
-  home.packages = [ colresizeToggle ];
+in {
+  home.packages = [colresizeToggle];
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -95,24 +94,30 @@ in
       };
       # ── Decoração ────────────────────────────────────────────────────────
       decoration = {
-        rounding = 10;
-        active_opacity = 0.85;
-        inactive_opacity = 0.60;
+        rounding = 12;
+        active_opacity = 0.92;
+        inactive_opacity = 0.75;
         shadow = {
           enabled = true;
-          range = 4;
-          render_power = 3;
-          color = "rgba(1a1a1aee)";
+          range = 20;
+          render_power = 4;
+          color = "rgba(00000066)";
+          color_inactive = "rgba(00000033)";
         };
         blur = {
           enabled = true;
-          size = 10;
-          passes = 4;
+          size = 8;
+          passes = 3;
           new_optimizations = true;
-          xray = true;
-          ignore_opacity = true;
+          xray = false;
+          ignore_opacity = false;
           special = true;
           popups = true;
+          noise = 0.02;
+          contrast = 1.1;
+          brightness = 0.9;
+          vibrancy = 0.2;
+          vibrancy_darkness = 0.1;
         };
       };
       # ── Animações ────────────────────────────────────────────────────────
@@ -238,11 +243,9 @@ in
         ]
         ++ (builtins.concatLists (builtins.genList
           (
-            i:
-            let
+            i: let
               ws = toString (i + 1);
-            in
-            [
+            in [
               "$mainMod, ${ws}, workspace, ${ws}"
               "$mainMod SHIFT, ${ws}, movetoworkspace, ${ws}"
             ]
