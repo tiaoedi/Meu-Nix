@@ -14,7 +14,7 @@
     '';
   };
 in {
-  home.packages = [ arcAuroraCursors ];
+  home.packages = [arcAuroraCursors];
 
   home.pointerCursor = {
     package = arcAuroraCursors;
