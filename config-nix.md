@@ -272,6 +272,13 @@ docker compose up -d
 cd /appdata/navidrome
 docker compose restart
 
+# para remover total
+cd /appdata/shinobi
+sudo docker compose down
+sudo docker rm -f shinobi shinobi-db 2>/dev/null
+sudo docker rmi shinobi-custom shinobisystems/shinobi:dev 2>/dev/null
+sudo rm -rf /appdata/shinobi
+
 ### Ventoy
 sudo NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#ventoy --impure -- -i /dev/sda```
 ````
