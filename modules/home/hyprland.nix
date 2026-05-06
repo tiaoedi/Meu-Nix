@@ -182,7 +182,7 @@ in {
           "$mainMod, F6, exec, vlc"
           "$mainMod, F8, exec, $files"
           "$mainMod, F11, exec, rofi -show drun -show-icons"
-          "$mainMod, P, exec, grimblast copy area"
+          "$mainMod, P, exec, hyprshot -m region"
           "$mainMod, A, exec, rofi -show window"
           "$mainMod, F12, exec, noctalia-shell ipc call launcher toggle"
           "$mainMod, X, exec, noctalia-shell ipc call sessionMenu toggle"
