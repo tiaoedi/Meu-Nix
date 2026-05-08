@@ -1,17 +1,16 @@
 #bv 💫 https://github.com/JaKooLit 💫 #
 # Main default config
-{ config
-, pkgs
-, lib
-, host
-, username
-, options
-, ...
-}:
-let
-  inherit (import ./variables.nix) keyboardLayout;
-in
 {
+  config,
+  pkgs,
+  lib,
+  host,
+  username,
+  options,
+  ...
+}: let
+  inherit (import ./variables.nix) keyboardLayout;
+in {
   imports = [
     ./hardware.nix
     ./users.nix
@@ -41,7 +40,7 @@ in
       "modprobe.blacklist=iTCO_wdt" # watchdog for Intel
       "androidboot.hardware=waydroid"
     ];
-    kernelModules = [ "btintel" "bluetooth" "ip_tables" "ip6_tables" "iptable_nat" "iptable_filter" "ipt_MASQUERADE" "ip6t_MASQUERADE" ];
+    kernelModules = ["btintel" "bluetooth" "ip_tables" "ip6_tables" "iptable_nat" "iptable_filter" "ipt_MASQUERADE" "ip6t_MASQUERADE"];
     # This is for OBS Virtual Cam Support
     #kernelModules = [ "v4l2loopback" ];
     #  extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
@@ -55,7 +54,7 @@ in
         "usbhid"
         "sd_mod"
       ];
-      kernelModules = [ ];
+      kernelModules = [];
     };
 
     # Needed For Some Steam Games
@@ -133,7 +132,7 @@ in
   networking = {
     networkmanager.enable = true;
     hostName = "Nix";
-    timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
+    timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
   };
 
   networking.nftables.enable = true;
@@ -236,7 +235,7 @@ in
   };
 
   systemd.services.flatpak-repo = {
-    path = [ pkgs.flatpak ];
+    path = [pkgs.flatpak];
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
@@ -369,8 +368,8 @@ in
 
   systemd.services.libvirtd-credentials = {
     description = "Generate libvirtd encryption credentials";
-    before = [ "libvirtd.service" ];
-    wantedBy = [ "libvirtd.service" ];
+    before = ["libvirtd.service"];
+    wantedBy = ["libvirtd.service"];
     serviceConfig.Type = "oneshot";
     script = ''
       if [ ! -f /var/lib/libvirt/secrets/secrets-encryption-key ]; then
@@ -382,7 +381,7 @@ in
   };
 
   # OpenGL
-  hardware.firmware = with pkgs; [ linux-firmware ];
+  hardware.firmware = with pkgs; [linux-firmware];
   hardware.graphics = {
     enable = true;
   };
@@ -416,7 +415,7 @@ in
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 80 443 ];
+    allowedTCPPorts = [80 443];
     allowedUDPPortRanges = [
       {
         from = 4000;
@@ -427,7 +426,7 @@ in
         to = 8010;
       }
     ];
-    trustedInterfaces = [ "virbr0" "waydroid0" ];
+    trustedInterfaces = ["virbr0" "waydroid0"];
     checkReversePath = false;
   };
   programs.dconf.enable = true;
@@ -440,7 +439,7 @@ in
   fileSystems."/dev/binderfs" = {
     device = "binderfs";
     fsType = "binder";
-    options = [ "defaults" ];
+    options = ["defaults"];
   };
 
   # This value determines the NixOS release from which the default
