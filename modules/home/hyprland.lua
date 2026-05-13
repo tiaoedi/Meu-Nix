@@ -61,7 +61,7 @@ hl.config({
     gaps_in                 = 5,
     gaps_out                = 5,
     border_size             = 2,
-    ["col.active_border"] = "rgba(7aa2f7aa) rgba(c4a7e7aa) 45deg",
+    ["col.active_border"] = "rgba(7aa2f7aa)",
     ["col.inactive_border"] = "rgba(414868aa)",
     layout                  = "scrolling",
     resize_on_border        = true,
