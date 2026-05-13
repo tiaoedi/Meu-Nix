@@ -146,13 +146,13 @@ hl.config({
 })
 
 -- ── Autostart ────────────────────────────────────────────────────
-hl.exec_once("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-hl.exec_once("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-hl.exec_once("noctalia-shell")
-hl.exec_once("qs -c overview")
-hl.exec_once("kdeconnect-indicator")
-hl.exec_once("nm-applet --indicator")
-hl.exec_once("wl-paste --watch cliphist store")
+hl.execonce("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+hl.execonce("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+hl.execonce("noctalia-shell")
+hl.execonce("qs -c overview")
+hl.execonce("kdeconnect-indicator")
+hl.execonce("nm-applet --indicator")
+hl.execonce("wl-paste --watch cliphist store")
 
 -- ── Keybinds ─────────────────────────────────────────────────────
 
