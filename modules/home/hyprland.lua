@@ -138,7 +138,7 @@ hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
-hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ type = "real" }))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + V",         hl.dsp.window.float({ action = "toggle" }))
 --hl.bind(mainMod .. " + G",         hl.dsp.window.group({ action = "toggle" }))
 
@@ -189,6 +189,11 @@ hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" 
 hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.move({ direction = "down" }))
 
+hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
+
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
@@ -202,6 +207,8 @@ for i = 1, 10 do
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
+hl.bind("ALT + tab",         hl.dsp.focus({ workspace = "m+1" }))
+hl.bind("ALT + SHIFT + tab", hl.dsp.focus({ workspace = "m-1" }))
 
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
