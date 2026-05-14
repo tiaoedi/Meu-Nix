@@ -114,7 +114,7 @@ hl.animation({ leaf = "border",     enabled = true, speed = 10, bezier = "defaul
 hl.animation({ leaf = "fade",       enabled = true, speed = 7,  bezier = "default" })
 hl.animation({ leaf = "workspaces", enabled = true, speed = 6,  bezier = "default" })
 
--- ── Autostart ────────────────────────────────────────────────────
+--autostart
 hl.on("hyprland.start", function()
   hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
   hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
@@ -127,105 +127,51 @@ end)
 
 -- ── Keybinds ─────────────────────────────────────────────────────
 
+
+
+
 -- Sistema
-hl.bind(mainMod .. " + equal",     "exec", "hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '.float * 1.1')")
-hl.bind(mainMod .. " + minus",     "exec", "hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '(.float * 0.9) | if . < 1 then 1 else . end')")
-hl.bind(mainMod .. " + SHIFT + 0", "exec", "hyprctl -q keyword cursor:zoom_factor 1")
-hl.bind(mainMod .. " + SHIFT + R", "exec", "hyprctl reload")
-hl.bind(mainMod .. " + SHIFT + Q", "killactive")
-hl.bind(mainMod .. " + Q",         "killactive")
-hl.bind(mainMod .. " + SHIFT + E", "exit")
-hl.bind(mainMod .. " + F",         "exec", "colresize-toggle")
-hl.bind(mainMod .. " + SHIFT + F", "fullscreen", "0")
-hl.bind(mainMod .. " + V",         "togglefloating")
-hl.bind(mainMod .. " + G",         "togglegroup")
+hl.bind(mainMod .. " + equal",     hl.dsp.exec_cmd("hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '.float * 1.1')"))
+hl.bind(mainMod .. " + minus",     hl.dsp.exec_cmd("hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '(.float * 0.9) | if . < 1 then 1 else . end')"))
+hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.exec_cmd("hyprctl -q keyword cursor:zoom_factor 1"))
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
+hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
+hl.bind(mainMod .. " + F",         hl.dsp.window.fullscreen, 1({ type = "colresize-toggle" }))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ type = "real" }))
+hl.bind(mainMod .. " + V",         hl.dsp.window.float({ action = "toggle" }))
+--hl.bind(mainMod .. " + G",         hl.dsp.window.group({ action = "toggle" }))
 
 -- Apps
-hl.bind(mainMod .. " + Return",         "exec", term)
-hl.bind(mainMod .. " + T",              "exec", term)
-hl.bind(mainMod .. " + SHIFT + Return", "exec", files)
-hl.bind(mainMod .. " + F1",             "exec", "brave")
-hl.bind(mainMod .. " + F2",             "exec", browser)
-hl.bind(mainMod .. " + F3",             "exec", "firefox")
-hl.bind(mainMod .. " + F4",             "exec", "gimp")
-hl.bind(mainMod .. " + F5",             "exec", "noctalia-shell ipc call launcher clipboard")
-hl.bind(mainMod .. " + F6",             "exec", "vlc")
-hl.bind(mainMod .. " + F8",             "exec", files)
-hl.bind(mainMod .. " + F11",            "exec", "rofi -show drun -show-icons")
-hl.bind(mainMod .. " + F12",            "exec", "noctalia-shell ipc call launcher toggle")
-hl.bind(mainMod .. " + X",              "exec", "noctalia-shell ipc call sessionMenu toggle")
-hl.bind(mainMod .. " + D",              "exec", "fuzzel")
-hl.bind(mainMod .. " + E",              "exec", "code")
-hl.bind(mainMod .. " + P",              "exec", "hyprshot -m region")
-hl.bind(mainMod .. " + A",              "exec", "rofi -show window")
-hl.bind(mainMod .. " + O",              "exec", "overview-toggle")
-hl.bind("SUPER + ALT + L",              "exec", "swaylock")
+hl.bind(mainMod .. " + Return",              hl.dsp.exec_cmd(term))
+hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd(files))
+hl.bind(mainMod .. " + F1",             hl.dsp.exec_cmd("brave"))
+hl.bind(mainMod .. " + F2",             hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + F3",             hl.dsp.exec_cmd("firefox"))
+hl.bind(mainMod .. " + F4",             hl.dsp.exec_cmd("gimp"))
+hl.bind(mainMod .. " + F5",             hl.dsp.exec_cmd("noctalia-shell ipc call launcher clipboard"))
+hl.bind(mainMod .. " + F6",             hl.dsp.exec_cmd("vlc"))
+hl.bind(mainMod .. " + F8",             hl.dsp.exec_cmd(files))
+hl.bind(mainMod .. " + F11",            hl.dsp.exec_cmd("rofi -show drun -show-icons"))
+hl.bind(mainMod .. " + F12",            hl.dsp.exec_cmd("noctalia-shell ipc call launcher toggle"))
+hl.bind(mainMod .. " + X",              hl.dsp.exec_cmd("noctalia-shell ipc call sessionMenu toggle"))
+hl.bind(mainMod .. " + D",              hl.dsp.exec_cmd("fuzzel"))
+hl.bind(mainMod .. " + E",              hl.dsp.exec_cmd("code"))
+hl.bind(mainMod .. " + P",              hl.dsp.exec_cmd("hyprshot -m region"))
+hl.bind(mainMod .. " + A",              hl.dsp.exec_cmd("rofi -show window"))
+hl.bind(mainMod .. " + O",              hl.dsp.exec_cmd("overview-toggle"))
+hl.bind("SUPER + ALT + L",              hl.dsp.exec_cmd("swaylock"))
 
 -- Screenshot
-hl.bind("Print",        "exec", "flameshot")
-hl.bind("CTRL + Print", "exec", "flameshot screen")
-hl.bind("ALT + Print",  "exec", "flameshot gui")
+hl.bind("Print",        hl.dsp.exec_cmd("flameshot"))
+hl.bind("CTRL + Print", hl.dsp.exec_cmd("flameshot screen"))
+hl.bind("ALT + Print",  hl.dsp.exec_cmd("flameshot gui"))
 
 -- Foco
-hl.bind(mainMod .. " + left",  "movefocus", "l")
-hl.bind(mainMod .. " + right", "movefocus", "r")
-hl.bind(mainMod .. " + up",    "movefocus", "u")
-hl.bind(mainMod .. " + down",  "movefocus", "d")
-hl.bind(mainMod .. " + H",     "movefocus", "l")
-hl.bind(mainMod .. " + L",     "movefocus", "r")
-hl.bind(mainMod .. " + K",     "movefocus", "u")
-hl.bind(mainMod .. " + J",     "movefocus", "d")
+
 
 -- Mover janelas
-hl.bind(mainMod .. " + CTRL + H",      "movewindow", "l")
-hl.bind(mainMod .. " + CTRL + L",      "movewindow", "r")
-hl.bind(mainMod .. " + CTRL + K",      "movewindow", "u")
-hl.bind(mainMod .. " + CTRL + J",      "movewindow", "d")
-hl.bind(mainMod .. " + SHIFT + left",  "movewindow", "l")
-hl.bind(mainMod .. " + SHIFT + right", "movewindow", "r")
-hl.bind(mainMod .. " + SHIFT + up",    "movewindow", "u")
-hl.bind(mainMod .. " + SHIFT + down",  "movewindow", "d")
 
 -- Workspaces
-hl.bind(mainMod .. " + period",      "workspace", "e+1")
-hl.bind(mainMod .. " + comma",       "workspace", "e-1")
-hl.bind(mainMod .. " + tab",         "workspace", "m+1")
-hl.bind(mainMod .. " + SHIFT + tab", "workspace", "m-1")
-hl.bind("ALT + tab",                 "workspace", "m+1")
-hl.bind("ALT + SHIFT + tab",         "workspace", "m-1")
-hl.bind(mainMod .. " + SHIFT + U",   "movetoworkspace", "special")
-hl.bind(mainMod .. " + U",           "togglespecialworkspace")
 
--- Workspaces 1-9
-for i = 1, 9 do
-  hl.bind(mainMod .. " + " .. i,         "workspace", tostring(i))
-  hl.bind(mainMod .. " + SHIFT + " .. i, "movetoworkspace", tostring(i))
-end
 
--- Layout
-hl.bind(mainMod .. " + I",             "layoutmsg", "addmaster")
-hl.bind(mainMod .. " + CTRL + Return", "layoutmsg", "swapwithmaster")
-
--- Mídia
-hl.bind("XF86AudioRaiseVolume", "exec", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0")
-hl.bind("XF86AudioLowerVolume", "exec", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-")
-hl.bind("XF86AudioMute",        "exec", "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
-hl.bind("XF86AudioMicMute",     "exec", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
-hl.bind("XF86AudioPlay",        "exec", "playerctl play-pause")
-hl.bind("XF86AudioNext",        "exec", "playerctl next")
-hl.bind("XF86AudioPrev",        "exec", "playerctl previous")
-hl.bind("XF86AudioStop",        "exec", "playerctl stop")
-
--- Brilho
-hl.bind("XF86MonBrightnessUp",   "exec", "brightnessctl --class=backlight set +10%")
-hl.bind("XF86MonBrightnessDown", "exec", "brightnessctl --class=backlight set 10%-")
-
--- Redimensionar (repeating)
-hl.bind(mainMod .. " + SHIFT + H", "resizeactive", "-50 0",  { repeating = true })
-hl.bind(mainMod .. " + SHIFT + L", "resizeactive", "50 0",   { repeating = true })
-hl.bind(mainMod .. " + SHIFT + K", "resizeactive", "0 -50",  { repeating = true })
-hl.bind(mainMod .. " + SHIFT + J", "resizeactive", "0 50",   { repeating = true })
-
--- Mouse
-hl.bind(mainMod .. " + mouse:272", "movewindow",   nil, { mouse = true })
-hl.bind(mainMod .. " + mouse:273", "resizewindow", nil, { mouse = true })
