@@ -260,10 +260,10 @@ hl.bind("XF86MonBrightnessUp", hl.exec_cmd("brightnessctl --class=backlight set 
 hl.bind("XF86MonBrightnessDown", hl.exec_cmd("brightnessctl --class=backlight set 10%-"))
 
 -- Redimensionar (repeating)
-hl.bind(mainMod .. " + SHIFT + H", hl.dispatch("resizeactive -50 0 }), { repeating = true")
-hl.bind(mainMod .. " + SHIFT + L", hl.dispatch("resizeactive 50 0 }), { repeating = true")
-hl.bind(mainMod .. " + SHIFT + K", hl.dispatch("resizeactive 0 -50 }), { repeating = true")
-hl.bind(mainMod .. " + SHIFT + J", hl.dispatch("resizeactive 0 50 }), { repeating = true")
+hl.bind(mainMod .. " + SHIFT + H", hl.dispatch("resizeactive -50 0"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + L", hl.dispatch("resizeactive 50 0"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + K", hl.dispatch("resizeactive 0 -50"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + J", hl.dispatch("resizeactive 0 50"), { repeating = true })
 
 -- Mouse
 hl.bind(mainMod .. " + mouse:272", hl.dispatch("movewindow"), { mouse = true })
