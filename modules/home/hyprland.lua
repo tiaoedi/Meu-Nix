@@ -232,7 +232,7 @@ hl.bind(mainMod .. " + tab", hl.dispatch("workspace m+1"))
 hl.bind(mainMod .. " + SHIFT + tab", hl.dispatch("workspace m-1"))
 hl.bind("ALT + tab", hl.dispatch("workspace m+1"))
 hl.bind("ALT + SHIFT + tab", hl.dispatch("workspace m-1"))
-hl.bind(mainMod .. " + SHIFT + U", hl.dispatch("movetoworkspace "special""))
+hl.bind(mainMod .. " + SHIFT + U", hl.dispatch("movetoworkspace special"))
 hl.bind(mainMod .. " + U", hl.dispatch("togglespecialworkspace"))
 
 -- Workspaces 1-9
