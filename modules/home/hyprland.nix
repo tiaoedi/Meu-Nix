@@ -16,6 +16,11 @@
   '';
 in {
   home.packages = [colresizeToggle];
-  wayland.windowManager.hyprland.enable = true;
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    configType = "lua";
+  };
+
   xdg.configFile."hypr/hyprland.lua".source = ./hyprland.lua;
 }

@@ -44,6 +44,9 @@ in {
     # This is for OBS Virtual Cam Support
     #kernelModules = [ "v4l2loopback" ];
     #  extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+    # Acelera o boot
+    systemd.services.NetworkManager-wait-online.enable = false;
+    systemd.services.docker.wantedBy = lib.mkForce ["multi-user.target"];
 
     initrd = {
       availableKernelModules = [
