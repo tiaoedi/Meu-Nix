@@ -14,8 +14,20 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    configType = "lua";
+    settings = {
+      monitor = "HDMI-A-1,1920x1080@60,0x0,1";
+      "$mainMod" = "SUPER";
+      exec-once = [
+        "noctalia-shell"
+        "qs -c overview"
+        "nm-applet --indicator"
+        "wl-paste --watch cliphist store"
+      ];
+      bind = [
+        "$mainMod, Q, killactive"
+        "$mainMod SHIFT, E, exit"
+        "$mainMod, Return, exec, ghostty"
+      ];
+    };
   };
-
-  xdg.configFile."hypr/hyprland.lua".source = ./hyprland.lua;
 }
