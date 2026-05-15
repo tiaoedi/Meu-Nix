@@ -15,6 +15,7 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     configType = "lua";
-    extraConfig = builtins.readFile ./hyprland.lua;
   };
+
+  xdg.configFile."hypr/hyprland.lua".source = ./hyprland.lua;
 }
