@@ -28,7 +28,7 @@ hl.env("QT_QPA_PLATFORMTHEME",                "qt6ct")
 hl.env("HYPRCURSOR_THEME",                    "ArcAurora-Cursors")
 hl.env("XCURSOR_THEME",                       "ArcAurora-Cursors")
 hl.env("HYPRCURSOR_SIZE",                     "24")
-hl.env("AQ_DRM_DEVICES", "/dev/dri/renderD128")
+--hl.env("AQ_DRM_DEVICES", "/dev/dri/renderD128")
 
 -- ── Config ───────────────────────────────────────────────────────
 hl.config({
@@ -62,11 +62,14 @@ hl.config({
     extend_border_grab_area = 5,
   },
   
-  master = {
-        new_status = "master";
-        mfact = 0.5;
-      };
-  
+  cursor = {
+        zoom_factor = 1,
+        zoom_rigid = false,
+        zoom_disable_aa = true,
+        hotspot_padding = 1
+    },
+
+      
   scrolling = {
     column_width             = 0.5,
     follow_focus             = true,
