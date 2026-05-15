@@ -28,6 +28,7 @@ hl.env("QT_QPA_PLATFORMTHEME",                "qt6ct")
 hl.env("HYPRCURSOR_THEME",                    "ArcAurora-Cursors")
 hl.env("XCURSOR_THEME",                       "ArcAurora-Cursors")
 hl.env("HYPRCURSOR_SIZE",                     "24")
+hl.env("AQ_DRM_DEVICES", "/dev/dri/renderD128")
 
 -- ── Config ───────────────────────────────────────────────────────
 hl.config({
@@ -60,6 +61,12 @@ hl.config({
     resize_on_border        = true,
     extend_border_grab_area = 5,
   },
+  
+  master = {
+        new_status = "master";
+        mfact = 0.5;
+      };
+  
   scrolling = {
     column_width             = 0.5,
     follow_focus             = true,
@@ -127,9 +134,6 @@ end)
 
 -- ── Keybinds ─────────────────────────────────────────────────────
 
-
-
-
 -- Sistema
 hl.bind(mainMod .. " + equal",     hl.dsp.exec_cmd("hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '.float * 1.1')"))
 hl.bind(mainMod .. " + minus",     hl.dsp.exec_cmd("hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '(.float * 0.9) | if . < 1 then 1 else . end')"))
@@ -137,7 +141,7 @@ hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.exec_cmd("hyprctl -q keyword cursor:zo
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + V",         hl.dsp.window.float({ action = "toggle" }))
 --hl.bind(mainMod .. " + G",         hl.dsp.window.group({ action = "toggle" }))
