@@ -37,8 +37,8 @@ hl.config({
 	},
 	input = {
 		kb_layout = "us",
-		kb_variant = "intl",
-		repeat_delay = 250,
+		kb_variant = "alt-intl",
+		repeat_delay = 200,
 		repeat_rate = 50,
 		follow_mouse = 1,
 		numlock_by_default = true,
