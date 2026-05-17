@@ -13,7 +13,7 @@ hl.monitor({
 	output = "HDMI-A-1",
 	mode = "1920x1080@60",
 	position = "0x0",
-	scale = 1.0,
+	scale = "1",
 })
 
 -- ── Ambiente ─────────────────────────────────────────────────────
@@ -145,10 +145,8 @@ hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.exec_cmd("hyprctl -q keyword cursor:zo
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
-hl.bind(mainMod .. " + D", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle", type = 1 }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" }))
-hl.bind(mainMod .. " + SHIFT + V", hl.dsp.window.fullscreen({ action = "toggle", type = 0, client = 3 }))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 --hl.bind(mainMod .. " + G",         hl.dsp.window.group({ action = "toggle" }))
 
