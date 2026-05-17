@@ -146,7 +146,9 @@ hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
 hl.bind(mainMod .. " + D", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle", type = 1 }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + V", hl.dsp.window.fullscreen({ action = "toggle", type = 0, client = 3 }))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 --hl.bind(mainMod .. " + G",         hl.dsp.window.group({ action = "toggle" }))
 
@@ -227,17 +229,19 @@ hl.bind("CONTROL + ALT + left", hl.dsp.focus({ workspace = "m-1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
-
-
 local function zoomfunction(value)
-    local zoomvalue = hl.get_config("cursor:zoom_factor")
-    if (zoomvalue + value) > 3.0 then
-        hl.config({ cursor = { zoom_factor = 3.0 } })
-    elseif (zoomvalue + value) < 1.0 then
-        hl.config({ cursor = { zoom_factor = 1.0 } })
-    else
-        hl.config({ cursor = { zoom_factor = zoomvalue + value } })
-    end
+	local zoomvalue = hl.get_config("cursor:zoom_factor")
+	if (zoomvalue + value) > 3.0 then
+		hl.config({ cursor = { zoom_factor = 3.0 } })
+	elseif (zoomvalue + value) < 1.0 then
+		hl.config({ cursor = { zoom_factor = 1.0 } })
+	else
+		hl.config({ cursor = { zoom_factor = zoomvalue + value } })
+	end
 end
-hl.bind("SUPER + Minus", function() zoomfunction(-0.3) end, { repeating = true, description = "Screen: Zoom out" })
-hl.bind("SUPER + Equal", function() zoomfunction(0.3) end, { repeating = true, description = "Screen: Zoom in" })
+hl.bind("SUPER + Minus", function()
+	zoomfunction(-0.3)
+end, { repeating = true, description = "Screen: Zoom out" })
+hl.bind("SUPER + Equal", function()
+	zoomfunction(0.3)
+end, { repeating = true, description = "Screen: Zoom in" })
