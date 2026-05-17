@@ -39,6 +39,11 @@ in {
       "modprobe.blacklist=sp5100_tco" # watchdog for AMD
       "modprobe.blacklist=iTCO_wdt" # watchdog for Intel
       "androidboot.hardware=waydroid"
+      "systemd.mask=dev-ttyS0.device"
+      "systemd.mask=dev-ttyS1.device"
+      "systemd.mask=dev-ttyS2.device"
+      "systemd.mask=dev-ttyS3.device"
+      "systemd.mask=dev-tpm0.device"
     ];
     kernelModules = ["btintel" "bluetooth" "ip_tables" "ip6_tables" "iptable_nat" "iptable_filter" "ipt_MASQUERADE" "ip6t_MASQUERADE"];
     # This is for OBS Virtual Cam Support
