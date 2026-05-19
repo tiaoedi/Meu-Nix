@@ -28,6 +28,7 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("HYPRCURSOR_THEME", "ArcAurora-Cursors")
 hl.env("XCURSOR_THEME", "ArcAurora-Cursors")
 hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("WLR_DRM_DEVICES", "/dev/dri/card1:/dev/dri/renderD128")
 --hl.env("AQ_DRM_DEVICES", "/dev/dri/renderD128")
 
 -- ── Config ───────────────────────────────────────────────────────
@@ -39,7 +40,7 @@ hl.config({
 		kb_layout = "us",
 		kb_variant = "alt-intl",
 		repeat_delay = 200,
-		repeat_rate = 50,
+		repeat_rate = 40,
 		follow_mouse = 1,
 		numlock_by_default = true,
 		touchpad = {
