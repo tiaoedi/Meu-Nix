@@ -1,9 +1,9 @@
-{ pkgs
-, inputs
-, username
-, ...
-}:
-let
+{
+  pkgs,
+  inputs,
+  username,
+  ...
+}: let
   colresizeToggle = pkgs.writeShellScriptBin "colresize-toggle" ''
     CURRENT=$(hyprctl activewindow -j | jq '.size[0]')
     MONITOR=$(hyprctl monitors -j | jq '.[0].width')
@@ -14,9 +14,8 @@ let
       hyprctl dispatch layoutmsg "colresize +0.5"
     fi
   '';
-in
-{
-  home.packages = [ colresizeToggle ];
+in {
+  home.packages = [colresizeToggle];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -26,5 +25,4 @@ in
     source = ./hyprland.lua;
     force = true;
   };
-
 }
