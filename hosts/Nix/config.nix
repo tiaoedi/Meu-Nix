@@ -50,8 +50,15 @@ in {
     #kernelModules = [ "v4l2loopback" ];
     #  extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     # Acelera o boot
-    systemd.services.NetworkManager-wait-online.enable = false;
+
+    #systemd.services.NetworkManager-wait-online.enable = false;
     systemd.services.docker.wantedBy = lib.mkForce ["multi-user.target"];
+
+    systemd.services.NetworkManager-wait-online = {
+      enable = true;
+      wantedBy = ["network-online.target"];
+      serviceConfig.TimeoutStartSec = "15s";
+    };
 
     initrd = {
       availableKernelModules = [
@@ -134,7 +141,7 @@ in {
   };
 
   vm.guest-services.enable = false;
-  local.hardware-clock.enable = false;
+  local.hardware-clock.enable = true;
 
   # networking
   networking = {
@@ -147,8 +154,6 @@ in {
 
   # Set your time zone.
   services.automatic-timezoned.enable = true; # based on IP location
-
-  #https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
   # Select internationalisation properties.
   i18n.defaultLocale = "pt_BR.UTF-8";
@@ -409,6 +414,10 @@ in {
   #virtualisation.docker = {
   # enable = true;
   #};
+  systemd.services.docker = {
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
+  };
 
   # For Electron apps to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -442,14 +451,14 @@ in {
   environment.variables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
+    TZ = "America/Sao_Paulo";
+    TZDIR = "/etc/zoneinfo";
   };
-
   fileSystems."/dev/binderfs" = {
     device = "binderfs";
     fsType = "binder";
     options = ["defaults"];
   };
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

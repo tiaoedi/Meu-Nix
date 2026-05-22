@@ -18,6 +18,7 @@ hl.monitor({
 
 -- ── Ambiente ─────────────────────────────────────────────────────
 hl.env("TZ", "America/Sao_Paulo")
+hl.env("TZDIR", "/etc/zoneinfo")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")

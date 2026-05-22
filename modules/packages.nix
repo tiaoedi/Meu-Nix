@@ -216,7 +216,7 @@
     swappy
     serie #git cli tool
     swaynotificationcenter
-    swww
+    awww
     unzip
     wallust
     wdisplays
