@@ -1,16 +1,17 @@
 #bv 💫 https://github.com/JaKooLit 💫 #
 # Main default config
-{
-  config,
-  pkgs,
-  lib,
-  host,
-  username,
-  options,
-  ...
-}: let
+{ config
+, pkgs
+, lib
+, host
+, username
+, options
+, ...
+}:
+let
   inherit (import ./variables.nix) keyboardLayout;
-in {
+in
+{
   imports = [
     ./hardware.nix
     ./users.nix
@@ -45,18 +46,18 @@ in {
       "systemd.mask=dev-ttyS3.device"
       "systemd.mask=dev-tpm0.device"
     ];
-    kernelModules = ["btintel" "bluetooth" "ip_tables" "ip6_tables" "iptable_nat" "iptable_filter" "ipt_MASQUERADE" "ip6t_MASQUERADE"];
+    kernelModules = [ "btintel" "bluetooth" "ip_tables" "ip6_tables" "iptable_nat" "iptable_filter" "ipt_MASQUERADE" "ip6t_MASQUERADE" ];
     # This is for OBS Virtual Cam Support
     #kernelModules = [ "v4l2loopback" ];
     #  extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     # Acelera o boot
 
     #systemd.services.NetworkManager-wait-online.enable = false;
-    systemd.services.docker.wantedBy = lib.mkForce ["multi-user.target"];
+    systemd.services.docker.wantedBy = lib.mkForce [ "multi-user.target" ];
 
     systemd.services.NetworkManager-wait-online = {
       enable = true;
-      wantedBy = ["network-online.target"];
+      wantedBy = [ "network-online.target" ];
       serviceConfig.TimeoutStartSec = "15s";
     };
 
@@ -69,7 +70,7 @@ in {
         "usbhid"
         "sd_mod"
       ];
-      kernelModules = [];
+      kernelModules = [ ];
     };
 
     # Needed For Some Steam Games
@@ -147,7 +148,7 @@ in {
   networking = {
     networkmanager.enable = true;
     hostName = "Nix";
-    timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
+    timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
   };
 
   networking.nftables.enable = true;
@@ -248,7 +249,7 @@ in {
   };
 
   systemd.services.flatpak-repo = {
-    path = [pkgs.flatpak];
+    path = [ pkgs.flatpak ];
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
@@ -381,8 +382,8 @@ in {
 
   systemd.services.libvirtd-credentials = {
     description = "Generate libvirtd encryption credentials";
-    before = ["libvirtd.service"];
-    wantedBy = ["libvirtd.service"];
+    before = [ "libvirtd.service" ];
+    wantedBy = [ "libvirtd.service" ];
     serviceConfig.Type = "oneshot";
     script = ''
       if [ ! -f /var/lib/libvirt/secrets/secrets-encryption-key ]; then
@@ -394,7 +395,7 @@ in {
   };
 
   # OpenGL
-  hardware.firmware = with pkgs; [linux-firmware];
+  hardware.firmware = with pkgs; [ linux-firmware ];
   hardware.graphics = {
     enable = true;
   };
@@ -415,8 +416,8 @@ in {
   # enable = true;
   #};
   systemd.services.docker = {
-    after = ["network-online.target"];
-    wants = ["network-online.target"];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
   };
 
   # For Electron apps to use wayland
@@ -432,7 +433,7 @@ in {
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [80 443];
+    allowedTCPPorts = [ 80 443 ];
     allowedUDPPortRanges = [
       {
         from = 4000;
@@ -443,7 +444,7 @@ in {
         to = 8010;
       }
     ];
-    trustedInterfaces = ["virbr0" "waydroid0"];
+    trustedInterfaces = [ "virbr0" "waydroid0" ];
     checkReversePath = false;
   };
   programs.dconf.enable = true;
@@ -457,15 +458,8 @@ in {
   fileSystems."/dev/binderfs" = {
     device = "binderfs";
     fsType = "binder";
-    options = ["defaults"];
+    options = [ "defaults" ];
   };
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Data de Intalação= 16-02-2026
 }
-# mount binderfs para waydroid - adicionar antes do fechamento
 
