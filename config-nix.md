@@ -285,4 +285,6 @@ sudo NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#ventoy --im
 ## Rmover hypr.bak
 rm ~/.config/hypr/hyprland.lua.hm-bak
 cd ~/Meu-Nix && update````
+## Atualizar hyprland
+sed -i 's|url = "github:hyprwm/Hyprland/v0.55.0"|url = "github:hyprwm/Hyprland/v0.55.2"|' ~/Meu-Nix/flake.nix
 `````
