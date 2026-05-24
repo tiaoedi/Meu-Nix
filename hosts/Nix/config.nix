@@ -1,17 +1,16 @@
 #bv 💫 https://github.com/JaKooLit 💫 #
 # Main default config
-{ config
-, pkgs
-, lib
-, host
-, username
-, options
-, ...
-}:
-let
-  inherit (import ./variables.nix) keyboardLayout;
-in
 {
+  config,
+  pkgs,
+  lib,
+  host,
+  username,
+  options,
+  ...
+}: let
+  inherit (import ./variables.nix) keyboardLayout;
+in {
   imports = [
     ./hardware.nix
     ./users.nix
@@ -23,9 +22,6 @@ in
     ../../modules/vm-guest-services.nix
     ../../modules/local-hardware-clock.nix
     ../../modules/pipewire.nix
-    #../../modules/virt-manager.nix
-    #.../.../modules/overlays/python-svg-fix.nix
-    #../../modules/virt-manager.nix
   ];
 
   # BOOT related stuffV
@@ -46,18 +42,14 @@ in
       "systemd.mask=dev-ttyS3.device"
       "systemd.mask=dev-tpm0.device"
     ];
-    kernelModules = [ "btintel" "bluetooth" "ip_tables" "ip6_tables" "iptable_nat" "iptable_filter" "ipt_MASQUERADE" "ip6t_MASQUERADE" ];
-    # This is for OBS Virtual Cam Support
-    #kernelModules = [ "v4l2loopback" ];
-    #  extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
-    # Acelera o boot
+    kernelModules = ["btintel" "bluetooth" "ip_tables" "ip6_tables" "iptable_nat" "iptable_filter" "ipt_MASQUERADE" "ip6t_MASQUERADE"];
 
     #systemd.services.NetworkManager-wait-online.enable = false;
-    systemd.services.docker.wantedBy = lib.mkForce [ "multi-user.target" ];
+    systemd.services.docker.wantedBy = lib.mkForce ["multi-user.target"];
 
     systemd.services.NetworkManager-wait-online = {
       enable = true;
-      wantedBy = [ "network-online.target" ];
+      wantedBy = ["network-online.target"];
       serviceConfig.TimeoutStartSec = "15s";
     };
 
@@ -70,15 +62,9 @@ in
         "usbhid"
         "sd_mod"
       ];
-      kernelModules = [ ];
+      kernelModules = [];
     };
 
-    # Needed For Some Steam Games
-    #kernel.sysctl = {
-    #  "vm.max_map_count" = 2147483642;
-    #};
-
-    ## BOOT LOADERS: NOTE USE ONLY 1. either systemd or grub
     # Bootloader SystemD
     loader.systemd-boot.enable = true;
 
@@ -88,21 +74,6 @@ in
     };
 
     loader.timeout = 5;
-
-    # Bootloader GRUB
-    #loader.grub = {
-    #enable = true;
-    #  devices = [ "nodev" ];
-    #  efiSupport = true;
-    #  gfxmodeBios = "auto";
-    #  memtest86.enable = true;
-    #  extraGrubInstallArgs = [ "--bootloader-id=${host}" ];
-    #  configurationName = "${host}";
-    #	 };
-
-    # Bootloader GRUB theme, configure below
-
-    ## -end of BOOTLOADERS----- ##
 
     # Make /tmp a tmpfs
     tmp = {
@@ -123,12 +94,6 @@ in
     plymouth.enable = true;
   };
 
-  # GRUB Bootloader theme. Of course you need to enable GRUB above.. duh! and also, enable it on flake.nix
-  #distro-grub-themes = {
-  #  enable = true;
-  #  theme = "nixos";
-  #};
-
   # Extra Module Options
   drivers = {
     amdgpu.enable = true;
@@ -148,7 +113,7 @@ in
   networking = {
     networkmanager.enable = true;
     hostName = "Nix";
-    timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
+    timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
   };
 
   networking.nftables.enable = true;
@@ -224,32 +189,10 @@ in
     upower.enable = true;
 
     gnome.gnome-keyring.enable = true;
-
-    #printing = {
-    #  enable = false;
-    #  drivers = [
-    # pkgs.hplipWithPlugin
-    #  ];
-    #};
-
-    #avahi = {
-    #  enable = true;
-    #  nssmdns4 = true;
-    #  openFirewall = true;
-    #};
-
-    #ipp-usb.enable = true;
-
-    #syncthing = {
-    #  enable = false;
-    #  user = "${username}";
-    #  dataDir = "/home/${username}";
-    #  configDir = "/home/${username}/.config/syncthing";
-    #};
   };
 
   systemd.services.flatpak-repo = {
-    path = [ pkgs.flatpak ];
+    path = [pkgs.flatpak];
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
@@ -268,12 +211,6 @@ in
     enable = true;
     cpuFreqGovernor = "schedutil";
   };
-
-  #hardware.sane = {
-  #  enable = true;
-  #  extraBackends = [ pkgs.sane-airscan ];
-  #  disabledDefaultBackends = [ "escl" ];
-  #};
 
   # Extra Logitech Support
   hardware = {
@@ -382,8 +319,8 @@ in
 
   systemd.services.libvirtd-credentials = {
     description = "Generate libvirtd encryption credentials";
-    before = [ "libvirtd.service" ];
-    wantedBy = [ "libvirtd.service" ];
+    before = ["libvirtd.service"];
+    wantedBy = ["libvirtd.service"];
     serviceConfig.Type = "oneshot";
     script = ''
       if [ ! -f /var/lib/libvirt/secrets/secrets-encryption-key ]; then
@@ -395,7 +332,7 @@ in
   };
 
   # OpenGL
-  hardware.firmware = with pkgs; [ linux-firmware ];
+  hardware.firmware = with pkgs; [linux-firmware];
   hardware.graphics = {
     enable = true;
   };
@@ -416,8 +353,8 @@ in
   # enable = true;
   #};
   systemd.services.docker = {
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
   };
 
   # For Electron apps to use wayland
@@ -425,15 +362,9 @@ in
   # For Hyprland QT Support
   environment.sessionVariables.QML_IMPORT_PATH = "${pkgs.hyprland-qt-support}/lib/qt-6/qml";
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 80 443 ];
+    allowedTCPPorts = [80 443];
     allowedUDPPortRanges = [
       {
         from = 4000;
@@ -444,7 +375,7 @@ in
         to = 8010;
       }
     ];
-    trustedInterfaces = [ "virbr0" "waydroid0" ];
+    trustedInterfaces = ["virbr0" "waydroid0"];
     checkReversePath = false;
   };
   programs.dconf.enable = true;
@@ -452,14 +383,11 @@ in
   environment.variables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
-    TZ = "America/Sao_Paulo";
-    TZDIR = "/etc/zoneinfo";
   };
   fileSystems."/dev/binderfs" = {
     device = "binderfs";
     fsType = "binder";
-    options = [ "defaults" ];
+    options = ["defaults"];
   };
   system.stateVersion = "25.11"; # Data de Intalação= 16-02-2026
 }
-
