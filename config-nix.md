@@ -264,6 +264,10 @@ Renomear aba: Ctrl + Shift + alt + t
 cd /appdata/navidrome
 docker compose down
 
+## Atualizar
+docker compose pull
+docker compose up -d --force-recreate
+
 #### ligar ###
 cd /appdata/navidrome
 docker compose up -d
