@@ -267,6 +267,7 @@ docker compose down
 ## Atualizar
 docker compose pull
 docker compose up -d --force-recreate
+docker image prune -f
 
 #### ligar ###
 cd /appdata/navidrome
