@@ -232,3 +232,6 @@ end, { repeating = true, description = "Screen: Zoom out" })
 hl.bind("SUPER + Equal", function()
 	zoomfunction(0.3)
 end, { repeating = true, description = "Screen: Zoom in" })
+
+-- This loads Noctalia-generated Hyprland colors.
+dofile("/home/pc120/.config/hypr/noctalia/noctalia-colors.lua")
