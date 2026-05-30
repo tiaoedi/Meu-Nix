@@ -55,7 +55,7 @@
 
 ## 🔧 Manutenção NixOS
 
-```sh
+````sh
 # Rebuildar o sistema
 update
 
@@ -79,7 +79,9 @@ sudo nix-store --optimise
 
 # Formatar os arquivos nix
 nix fmt .
-```
+
+# Atualir home-managger
+nix flake update home-manager
 
 # Regenere o Noctalia
 
@@ -104,7 +106,7 @@ noctalia-shell ipc call settings open
 noctalia-shell ipc call launcher toggle
 noctalia-shell ipc call sessionMenu toggle
 noctalia-shell ipc call controlCenter toggle
-```
+````
 
 ---
 
