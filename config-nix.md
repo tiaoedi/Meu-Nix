@@ -293,6 +293,8 @@ sudo NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#ventoy --im
 rm ~/.config/hypr/hyprland.lua.hm-bak
 cd ~/Meu-Nix && update````
 ## Atualizar hyprland
+curl -s https://api.github.com/repos/hyprwm/Hyprland/releases/latest | grep '"tag_name"'
+
 sed -i 's|url = "github:hyprwm/Hyprland/v0.55.0"|url = "github:hyprwm/Hyprland/v0.55.2"|' ~/Meu-Nix/flake.nix
 grep "hyprwm/Hyprland" ~/Meu-Nix/flake.nix
 `````
