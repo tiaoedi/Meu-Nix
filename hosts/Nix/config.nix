@@ -388,5 +388,6 @@ in
     fsType = "binder";
     options = [ "defaults" ];
   };
+  catppuccin.autoEnable = false;
   system.stateVersion = "25.11"; # Data de Intalação= 16-02-2026
 }
