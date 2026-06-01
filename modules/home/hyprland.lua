@@ -30,8 +30,6 @@ hl.env("HYPRCURSOR_THEME", "ArcAurora-Cursors")
 hl.env("XCURSOR_THEME", "ArcAurora-Cursors")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("AQ_DRM_DEVICES", "/dev/dri/card1:/dev/dri/renderD128")
---hl.env("AQ_DRM_DEVICES", "/dev/dri/renderD128")
-
 -- ── Config ───────────────────────────────────────────────────────
 hl.config({
 	cursor = {

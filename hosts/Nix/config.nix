@@ -389,5 +389,8 @@ in
     options = [ "defaults" ];
   };
   catppuccin.autoEnable = false;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
   system.stateVersion = "25.11"; # Data de Intalação= 16-02-2026
 }
