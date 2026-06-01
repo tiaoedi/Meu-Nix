@@ -287,7 +287,7 @@ sudo docker rmi shinobi-custom shinobisystems/shinobi:dev 2>/dev/null
 sudo rm -rf /appdata/shinobi
 
 ### Ventoy
-sudo NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#ventoy --impure -- -i /dev/sda```
+sudo NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#ventoy --impure -- -i /dev/sda
 
 ## Rmover hypr.bak
 rm ~/.config/hypr/hyprland.lua.hm-bak
