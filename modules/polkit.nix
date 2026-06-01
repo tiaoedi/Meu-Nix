@@ -4,23 +4,21 @@
   ...
 }: {
   systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
+    user.services.hyprpolkitagent = {
+      description = "hyprpolkitagent";
       wantedBy = ["graphical-session.target"];
       wants = ["graphical-session.target"];
       after = ["graphical-session.target"];
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
       };
     };
   };
-
   security.polkit.enable = true;
-
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (
