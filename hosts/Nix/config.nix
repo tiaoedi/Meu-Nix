@@ -43,14 +43,7 @@ in
     ];
     kernelModules = [ "btintel" "bluetooth" "ip_tables" "ip6_tables" "iptable_nat" "iptable_filter" "ipt_MASQUERADE" "ip6t_MASQUERADE" ];
 
-    #systemd.services.NetworkManager-wait-online.enable = false;
-    systemd.services.docker.wantedBy = lib.mkForce [ "multi-user.target" ];
 
-    systemd.services.NetworkManager-wait-online = {
-      enable = true;
-      wantedBy = [ "network-online.target" ];
-      serviceConfig.TimeoutStartSec = "15s";
-    };
 
     initrd = {
       availableKernelModules = [
@@ -356,6 +349,7 @@ in
     wants = [ "network-online.target" ];
   };
 
+  systemd.services.fwupd-refresh.enable = false;
   # For Electron apps to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # For Hyprland QT Support
