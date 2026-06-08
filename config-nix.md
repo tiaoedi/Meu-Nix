@@ -297,4 +297,8 @@ curl -s https://api.github.com/repos/hyprwm/Hyprland/releases/latest | grep '"ta
 
 sed -i 's|url = "github:hyprwm/Hyprland/v0.55.0"|url = "github:hyprwm/Hyprland/v0.55.2"|' ~/Meu-Nix/flake.nix
 grep "hyprwm/Hyprland" ~/Meu-Nix/flake.nix
+
+## Voltar uma geração no git
+ cd ~/Meu-Nix
+git checkout HEAD flake.lock
 `````
