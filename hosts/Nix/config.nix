@@ -347,6 +347,15 @@ in {
   };
 
   systemd.services.fwupd-refresh.enable = false;
+  systemd.services.network-resume = {
+    description = "Restart NetworkManager after resume";
+    after = [ "suspend.target" "hibernate.target" ];
+    wantedBy = [ "suspend.target" "hibernate.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "/run/current-system/sw/bin/systemctl restart NetworkManager";
+    };
+  };
   # For Electron apps to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # For Hyprland QT Support
