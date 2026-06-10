@@ -119,6 +119,7 @@ hl.animation({ leaf = "workspaces", enabled = true, speed = 6, bezier = "default
 hl.on("hyprland.start", function()
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+	hl.exec_cmd("systemctl --user restart xdg-desktop-portal-hyprland")
 	hl.exec_cmd("noctalia")
 	hl.exec_cmd("qs -c overview")
 	hl.exec_cmd("kdeconnect-indicator")
