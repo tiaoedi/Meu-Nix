@@ -167,7 +167,6 @@ in {
 
     openssh.enable = true;
     flatpak.enable = true;
-
     blueman.enable = true;
 
     #hardware.openrgb.enable = true;
@@ -391,6 +390,11 @@ in {
     options = ["defaults"];
   };
   catppuccin.autoEnable = false;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+  };
   nixpkgs.config.permittedInsecurePackages = [
     "electron-39.8.10"
   ];

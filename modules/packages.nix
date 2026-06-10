@@ -1,8 +1,7 @@
-{
-  pkgs,
-  inputs,
-  host,
-  ...
+{ pkgs
+, inputs
+, host
+, ...
 }: {
   services.power-profiles-daemon.enable = true;
 
@@ -83,6 +82,7 @@
     nwg-look
     waypaper
     waybar
+    xdg-desktop-portal-gtk
     #waybar-weather
     hyprland-qt-support # for hyprland-qt-support
 
@@ -155,7 +155,7 @@
     libnotify
     libsForQt5.qtstyleplugin-kvantum # kvantum
     libsForQt5.qt5ct
-    (mpv.override {scripts = [mpvScripts.mpris];}) # with tray
+    (mpv.override { scripts = [ mpvScripts.mpris ]; }) # with tray
     nvtopPackages.full
     openssl # required by Rainbow borders
     pciutils
