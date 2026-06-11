@@ -5,7 +5,6 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.url = "github:nix-community/nixvim/main";
-    alejandra.url = "github:kamadorueda/alejandra";
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,12 +16,6 @@
     hyprland = {
       url = "github:hyprwm/Hyprland/v0.55.3";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    ags = {
-      type = "github";
-      owner = "aylur";
-      repo = "ags";
-      ref = "v1";
     };
     catppuccin = {
       url = "github:catppuccin/nix";
@@ -37,8 +30,6 @@
     inputs @ { self
     , nixpkgs
     , niri
-    , ags
-    , alejandra
     , ...
     }:
     let
@@ -136,6 +127,5 @@
           ];
         };
       };
-      formatter.x86_64-linux = alejandra.defaultPackage.x86_64-linux;
     };
 }

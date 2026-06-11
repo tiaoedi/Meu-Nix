@@ -230,7 +230,6 @@
     yt-dlp
 
     (inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default)
-    (inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.default)
 
     # Utils
     #browsr # file browser   # Fails python build 11/14/2025
