@@ -350,8 +350,8 @@ in {
   systemd.services.fwupd-refresh.enable = false;
   systemd.services.network-resume = {
     description = "Restart NetworkManager after resume";
-    after = [ "suspend.target" "hibernate.target" ];
-    wantedBy = [ "suspend.target" "hibernate.target" ];
+    after = ["suspend.target" "hibernate.target"];
+    wantedBy = ["suspend.target" "hibernate.target"];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "/run/current-system/sw/bin/systemctl restart NetworkManager";
@@ -392,7 +392,7 @@ in {
   catppuccin.autoEnable = false;
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
     config.common.default = "*";
   };
   nixpkgs.config.permittedInsecurePackages = [

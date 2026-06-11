@@ -14,7 +14,7 @@ alias lt='eza -a --tree --level=1 --icons'
 # Starting down here, are set in user.nix
 
 ##### Minhas alias #######
-alias upall="cd ~/Meu-Nix && git add . && noctsave &&  updatef && update && nixpush"
+alias upall="cd ~/Meu-Nix && git add . && updatef && update && nixpush"
 alias update="sudo nixos-rebuild switch --flake /home/pc120/Meu-Nix#Nix"
 alias updatef="sudo nix flake update"
 alias ff="fastfetch"
