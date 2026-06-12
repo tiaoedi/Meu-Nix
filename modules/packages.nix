@@ -1,8 +1,7 @@
-{
-  pkgs,
-  inputs,
-  host,
-  ...
+{ pkgs
+, inputs
+, host
+, ...
 }: {
   services.power-profiles-daemon.enable = true;
 
@@ -93,7 +92,7 @@
     appimage-run
     bc
     wlsunset
-    libsForQt5.qt5.qtmultimedia
+    #libsForQt5.qt5.qtmultimedia
     kdePackages.kdenlive
     ffmpeg
     mediainfo
@@ -156,7 +155,7 @@
     libnotify
     libsForQt5.qtstyleplugin-kvantum # kvantum
     libsForQt5.qt5ct
-    (mpv.override {scripts = [mpvScripts.mpris];}) # with tray
+    (mpv.override { scripts = [ mpvScripts.mpris ]; }) # with tray
     nvtopPackages.full
     openssl # required by Rainbow borders
     pciutils
@@ -191,7 +190,7 @@
     dmidecode
     #bitwarden-desktop
     capitaine-cursors
-    libsForQt5.qt5.qttools
+    #libsForQt5.qt5.qttools
     python313Packages.tkinter
     genymotion
     xdg-desktop-portal-wlr
