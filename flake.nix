@@ -6,7 +6,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     alejandra.url = "github:kamadorueda/alejandra/4.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
-   nixvim.url = "github:nix-community/nixvim";
+   nixvim.url = "github:nix-community/nixvim/81d65e0cfb00df0269195b59f156c719cc045ab8";
    niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
