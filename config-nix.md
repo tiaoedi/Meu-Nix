@@ -272,6 +272,7 @@ docker compose up -d --force-recreate
 docker image prune -f
 
 ## Trocar/Limpar senha
+docker exec pihole pihole setpassword
 docker exec -it pihole pihole setpassword ''
 
 #### ligar ###
