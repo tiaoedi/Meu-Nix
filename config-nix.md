@@ -271,6 +271,9 @@ docker compose pull
 docker compose up -d --force-recreate
 docker image prune -f
 
+## Trocar/Limpar senha
+docker exec -it pihole pihole setpassword ''
+
 #### ligar ###
 cd /appdata/navidrome
 docker compose up -d
