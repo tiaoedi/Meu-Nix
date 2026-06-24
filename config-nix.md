@@ -194,119 +194,6 @@ Quando o `updatef` der erro 403:
 2. Regenere o token
 3. Atualize em `~/.config/nix/nix.conf`
 
----
-
-## 📦 Estrutura do Repositório
-
-`````
-Meu-Nix/
-├── flake.nix          # Entrypoint principal
-├── flake.lock         # Lock dos inputs
-├── hosts/
-│   └── Nix/
-│       ├── config.nix         # Configuração principal do sistema
-│       ├── hardware.nix       # Hardware específico
-│       ├── users.nix          # Usuários
-│       └── variables.nix      # Variáveis (teclado, etc.)
-├── modules/
-│   ├── home/                  # Configurações do home-manager
-│   │   ├── default.nix        # Importações do home
-│   │   ├── niri.nix           # Compositor Niri
-│   │   ├── noctalia.nix       # Noctalia Shell
-│   │   ├── noctalia.json      # Configurações exportadas do Noctalia
-│   │   ├── cli/               # Ferramentas de linha de comando
-│   │   ├── editors/           # Nixvim
-│   │   └── terminals/         # Ghostty, Tmux
-│   ├── packages.nix           # Pacotes do sistema
-│   ├── fonts.nix              # Fontes
-│   ├── pipewire.nix           # Áudio
-│   └── quickshell.nix         # Quickshell
-└── zshrc                      # Aliases e configuração do ZSH
-
-
-# waydroid
-
-sudo waydroid init -s GAPPS -f
-sudo systemctl restart waydroid-container
-waydroid session start
-
-nix shell github:nix-community/NUR#repos.ataraxiasjel.waydroid-script -c sudo waydroid-script
-
-waydroid session stop
-sudo systemctl restart waydroid-container
-waydroid session start &
-waydroid show-full-ui
-
-# Backup dos dados
-sudo cp -r /var/lib/waydroid/data ~/waydroid-backup
-
-# Reinicializa
-sudo waydroid init -s GAPPS -f
-
-# Restaura os dados
-sudo cp -r ~/waydroid-backup/* /var/lib/waydroid/data/
-
-#yandex
-flatpak run ru.yandex.Browser --no-sandbox
-
-
-##pagina inicial
-http://localhost:3000/
-https://dashboard-manager--tiaoedi.replit.app
-
-# kitty Atalhos de Teclado
-Abrir nova aba: Ctrl + Shift + t
-Fechar aba atual: Ctrl + Shift + q (ou simplesmente digite exit no terminal)
-Próxima aba: Ctrl + Shift + Right (Seta para a direita)
-Aba anterior: Ctrl + Shift + Left (Seta para a esquerda)
-Renomear aba: Ctrl + Shift + alt + t
-
-
-### Docker Para desligar ###########
-cd /appdata/navidrome
-docker compose down
-
-## Atualizar
-docker compose pull
-docker compose up -d --force-recreate
-docker image prune -f
-
-## Trocar/Limpar senha
-docker exec pihole pihole setpassword
-docker exec -it pihole pihole setpassword ''
-
-#### ligar ###
-cd /appdata/navidrome
-docker compose up -d
-
-## Para apenas reiniciar ##
-cd /appdata/navidrome
-docker compose restart
-
-# para remover total
-cd /appdata/shinobi
-sudo docker compose down
-sudo docker rm -f shinobi shinobi-db 2>/dev/null
-sudo docker rmi shinobi-custom shinobisystems/shinobi:dev 2>/dev/null
-sudo rm -rf /appdata/shinobi
-
-### Ventoy
-sudo NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#ventoy --impure -- -i /dev/sda
-
-## Rmover hypr.bak
-rm ~/.config/hypr/hyprland.lua.hm-bak
-cd ~/Meu-Nix && update````
-## Atualizar hyprland
-curl -s https://api.github.com/repos/hyprwm/Hyprland/releases/latest | grep '"tag_name"'
-
-sed -i 's|url = "github:hyprwm/Hyprland/v0.55.0"|url = "github:hyprwm/Hyprland/v0.55.2"|' ~/Meu-Nix/flake.nix
-grep "hyprwm/Hyprland" ~/Meu-Nix/flake.nix
-
-## Voltar uma geração no git
- cd ~/Meu-Nix
-git checkout HEAD flake.lock
-`````
-
 ## Github Renovar token
 
 O token está em ~/.config/nix/nix.conf. Gere um novo token no GitHub:
@@ -324,5 +211,133 @@ echo "access-tokens = github.com=SEU_NOVO_TOKEN" > ~/.config/nix/nix.conf
 `
 
 ```
+
+---
+
+## 📦 Estrutura do Repositório
+
+```
+
+Meu-Nix/
+├── flake.nix # Entrypoint principal
+├── flake.lock # Lock dos inputs
+├── hosts/
+│ └── Nix/
+│ ├── config.nix # Configuração principal do sistema
+│ ├── hardware.nix # Hardware específico
+│ ├── users.nix # Usuários
+│ └── variables.nix # Variáveis (teclado, etc.)
+├── modules/
+│ ├── home/ # Configurações do home-manager
+│ │ ├── default.nix # Importações do home
+│ │ ├── niri.nix # Compositor Niri
+│ │ ├── noctalia.nix # Noctalia Shell
+│ │ ├── noctalia.json # Configurações exportadas do Noctalia
+│ │ ├── cli/ # Ferramentas de linha de comando
+│ │ ├── editors/ # Nixvim
+│ │ └── terminals/ # Ghostty, Tmux
+│ ├── packages.nix # Pacotes do sistema
+│ ├── fonts.nix # Fontes
+│ ├── pipewire.nix # Áudio
+│ └── quickshell.nix # Quickshell
+└── zshrc # Aliases e configuração do ZSH
+
+# waydroid
+
+sudo waydroid init -s GAPPS -f
+sudo systemctl restart waydroid-container
+waydroid session start
+
+nix shell github:nix-community/NUR#repos.ataraxiasjel.waydroid-script -c sudo waydroid-script
+
+waydroid session stop
+sudo systemctl restart waydroid-container
+waydroid session start &
+waydroid show-full-ui
+
+# Backup dos dados
+
+sudo cp -r /var/lib/waydroid/data ~/waydroid-backup
+
+# Reinicializa
+
+sudo waydroid init -s GAPPS -f
+
+# Restaura os dados
+
+sudo cp -r ~/waydroid-backup/\* /var/lib/waydroid/data/
+
+#yandex
+flatpak run ru.yandex.Browser --no-sandbox
+
+##pagina inicial
+http://localhost:3000/
+https://dashboard-manager--tiaoedi.replit.app
+
+# kitty Atalhos de Teclado
+
+Abrir nova aba: Ctrl + Shift + t
+Fechar aba atual: Ctrl + Shift + q (ou simplesmente digite exit no terminal)
+Próxima aba: Ctrl + Shift + Right (Seta para a direita)
+Aba anterior: Ctrl + Shift + Left (Seta para a esquerda)
+Renomear aba: Ctrl + Shift + alt + t
+
+### Docker Para desligar
+
+cd /appdata/navidrome
+docker compose down
+
+## Atualizar
+
+docker compose pull
+docker compose up -d --force-recreate
+docker image prune -f
+
+## Trocar/Limpar senha
+
+docker exec pihole pihole setpassword
+docker exec -it pihole pihole setpassword ''
+
+#### ligar
+
+cd /appdata/navidrome
+docker compose up -d
+
+## Para apenas reiniciar
+
+cd /appdata/navidrome
+docker compose restart
+
+# para remover total
+
+cd /appdata/shinobi
+sudo docker compose down
+sudo docker rm -f shinobi shinobi-db 2>/dev/null
+sudo docker rmi shinobi-custom shinobisystems/shinobi:dev 2>/dev/null
+sudo rm -rf /appdata/shinobi
+
+### Ventoy
+
+sudo NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#ventoy --impure -- -i /dev/sda
+
+## Rmover hypr.bak
+
+rm ~/.config/hypr/hyprland.lua.hm-bak
+cd ~/Meu-Nix && update````
+
+## Atualizar hyprland
+
+curl -s https://api.github.com/repos/hyprwm/Hyprland/releases/latest | grep '"tag_name"'
+
+sed -i 's|url = "github:hyprwm/Hyprland/v0.55.0"|url = "github:hyprwm/Hyprland/v0.55.2"|' ~/Meu-Nix/flake.nix
+grep "hyprwm/Hyprland" ~/Meu-Nix/flake.nix
+
+## Voltar uma geração no git
+
+cd ~/Meu-Nix
+git checkout HEAD flake.lock
+
+```
+
 
 ```
