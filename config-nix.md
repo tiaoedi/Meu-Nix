@@ -306,3 +306,23 @@ grep "hyprwm/Hyprland" ~/Meu-Nix/flake.nix
  cd ~/Meu-Nix
 git checkout HEAD flake.lock
 `````
+
+## Github Renovar token
+
+O token está em ~/.config/nix/nix.conf. Gere um novo token no GitHub:
+
+    Acesse https://github.com/settings/tokens
+    Clique em Generate new token (classic)
+    Selecione apenas o escopo public_repo ou sem escopo (só para rate limit)
+    Copie o token gerado
+
+Depois substitua:
+bash
+
+echo "access-tokens = github.com=SEU_NOVO_TOKEN" > ~/.config/nix/nix.conf
+
+`
+
+```
+
+```
