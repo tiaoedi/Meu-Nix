@@ -233,4 +233,5 @@ hl.bind("SUPER + Equal", function()
 end, { repeating = true, description = "Screen: Zoom in" })
 
 -- This loads Noctalia-generated Hyprland colors.
-dofile("/home/pc120/.config/hypr/noctalia.lua")
+local noctalia_theme = dofile("/home/pc120/.config/hypr/noctalia.lua")
+noctalia_theme.apply_theme()
