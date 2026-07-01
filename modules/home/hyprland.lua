@@ -37,12 +37,12 @@ hl.config({
 	},
 	input = {
 		kb_layout = "us",
-		kb_variant = "alt-intl",
+		kb_variant = "intl",
 		repeat_delay = 200,
 		repeat_rate = 40,
 		follow_mouse = 1,
 		numlock_by_default = true,
-		sensitivity = -1.2,
+		sensitivity = -1.5,
 		touchpad = {
 			natural_scroll = true,
 			tap_to_click = true,
