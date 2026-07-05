@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   imports = [
     #./terminals/alacritty.nix
     ./terminals/tmux.nix
@@ -18,6 +18,7 @@
     ./hyprland.nix
     ./hypridle.nix
     ./noctalia.nix
+    #./bar/bar.nix
     ./overview-toggle.nix
     ./cursor.nix
   ];

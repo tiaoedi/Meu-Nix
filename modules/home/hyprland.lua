@@ -42,7 +42,7 @@ hl.config({
 		repeat_rate = 40,
 		follow_mouse = 1,
 		numlock_by_default = true,
-		-- sensitivity = -1.0,
+		accel_profile = "flat",
 		touchpad = {
 			natural_scroll = true,
 			tap_to_click = true,
@@ -121,7 +121,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("systemctl --user restart xdg-desktop-portal-hyprland")
-	hl.exec_cmd("noctalia")
+	--	hl.exec_cmd("noctalia")
+	hl.exec_cmd("qs -c bar")
 	hl.exec_cmd("qs -c overview")
 	hl.exec_cmd("kdeconnect-indicator")
 	hl.exec_cmd("nm-applet --indicator")

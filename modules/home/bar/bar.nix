@@ -1,0 +1,1 @@
+/nix/store/hgs69ngiczhri5mw2899j52fbarsz3kl-home-manager-files/.config/quickshell/bar/bar.nix

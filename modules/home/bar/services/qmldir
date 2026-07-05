@@ -1,0 +1,2 @@
+module Services
+singleton HyprlandData 1.0 HyprlandData.qml

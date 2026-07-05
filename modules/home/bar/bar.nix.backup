@@ -1,0 +1,12 @@
+# Módulo home-manager para a barra Quickshell
+# Adicione ao seu modules/home/default.nix:
+#   ./bar.nix
+# E adicione ao autostart no hyprland.lua:
+#   hl.exec_cmd("qs -c bar")
+
+{ pkgs, ... }: {
+  xdg.configFile."quickshell/bar" = {
+    source = ./.;
+    recursive = true;
+  };
+}
